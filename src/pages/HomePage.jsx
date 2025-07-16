@@ -1,5 +1,6 @@
 // Import hooks from React
 import { useEffect, useMemo, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 
 export default function HomePage() {
@@ -116,7 +117,10 @@ export default function HomePage() {
                 orderedHeadphonesData.map(headphone => (
                     <div className="headphones-card" key={headphone.id}>
                         <p><strong>{headphone.title}</strong></p>
-                        <p>{headphone.category}</p>
+                        <p>{headphone.category.toUpperCase()}</p>
+                        <NavLink to={`/headphones/${headphone.id}`}>
+                            See complete spec sheets
+                        </NavLink>
                     </div>
                 ))
             )}

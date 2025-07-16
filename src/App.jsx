@@ -16,7 +16,7 @@ export default function App() {
       <Routes>
         <Route element={<DefaultLayout />}>
           <Route path="/" element={<HomePage />} />
-          {/* <Route path="/task/:id" element={<TaskDetail />} /> */}
+          {/* <Route path="/headphones/:id" element={<TaskDetail />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>
