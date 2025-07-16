@@ -20,7 +20,6 @@ main {
 header {
   height: 60px;
   border-bottom: solid 1px black;
-  margin-bottom: 5px;
   padding: 0 20px;
   display: flex;
   align-items: center;
@@ -39,8 +38,10 @@ header i {
   display: flex;
   align-items: center;
   gap: 20px;
+  padding: 10px 0;
 }
 
+/* input */
 .search input {
   padding: 5px 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -56,4 +57,34 @@ header i {
 input:focus {
   border-color: rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* category */
+.search select {
+  padding: 5px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(3px);
+  font-family: inherit;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='black' height='10' viewBox='0 0 24 24' width='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  padding-right: 30px;
+  cursor: pointer;
+}
+
+.search select:focus {
+  border-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* sort */
+.search i {
+  cursor: pointer;
 }

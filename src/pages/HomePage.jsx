@@ -14,26 +14,6 @@ export default function HomePage() {
 
     const [sortOrder, setSortOrder] = useState("no");
 
-    // function to order headphonesData
-    function toggleSortOrder() {
-        setSortOrder(prev =>
-            prev === "no" ? "asc" :
-                prev === "asc" ? "desc" :
-                    "no"
-        );
-    };
-
-    // orderEd headphonesData
-    let orderedHeadphonesData = useMemo(() => {
-        let sorted = [...headphonesData];
-        if (sortOrder === "asc") {
-            sorted.sort((a, b) => a.title.localeCompare(b.title));
-        } else if (sortOrder === "desc") {
-            sorted.sort((a, b) => b.title.localeCompare(a.title));
-        }
-        return sorted;
-    }, [headphonesData, sortOrder]);
-
     // function to fetch headphonesData
     async function fetchHeadphonesData() {
         try {
@@ -46,7 +26,27 @@ export default function HomePage() {
         } catch (error) {
             console.error('Error fetching dats', error);
         }
-    }
+    };
+
+    // function to toggleSortOrder
+    function toggleSortOrder() {
+        setSortOrder(prev =>
+            prev === "no" ? "asc" :
+                prev === "asc" ? "desc" :
+                    "no"
+        );
+    };
+
+    // order headphonesData
+    let orderedHeadphonesData = useMemo(() => {
+        let sorted = [...headphonesData];
+        if (sortOrder === "asc") {
+            sorted.sort((a, b) => a.title.localeCompare(b.title));
+        } else if (sortOrder === "desc") {
+            sorted.sort((a, b) => b.title.localeCompare(a.title));
+        }
+        return sorted;
+    }, [headphonesData, sortOrder]);
 
     // useEffect
     useEffect(() => {
