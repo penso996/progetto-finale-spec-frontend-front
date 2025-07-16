@@ -1,5 +1,5 @@
 // Import hooks from React
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 
 export default function HomePage() {
@@ -14,12 +14,6 @@ export default function HomePage() {
 
     const [sortOrder, setSortOrder] = useState("no");
 
-    // filtered headphonesData
-    const filteredHeadphoneData = headphonesData.filter(headphone =>
-        headphone.title.toLowerCase().includes(searchTitle.toLowerCase()) &&
-        (!searchCategory || headphone.category.toLowerCase() === searchCategory.toLowerCase())
-    );
-
     // function to order headphonesData
     function toggleSortOrder() {
         setSortOrder(prev =>
@@ -30,17 +24,20 @@ export default function HomePage() {
     };
 
     // orderEd headphonesData
-    let orderedHeadphoneData = [...filteredHeadphoneData];
-    if (sortOrder === "asc") {
-        orderedHeadphoneData.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (sortOrder === "desc") {
-        orderedHeadphoneData.sort((a, b) => b.title.localeCompare(a.title));
-    };
+    let orderedHeadphonesData = useMemo(() => {
+        let sorted = [...headphonesData];
+        if (sortOrder === "asc") {
+            sorted.sort((a, b) => a.title.localeCompare(b.title));
+        } else if (sortOrder === "desc") {
+            sorted.sort((a, b) => b.title.localeCompare(a.title));
+        }
+        return sorted;
+    }, [headphonesData, sortOrder]);
 
     // function to fetch headphonesData
     async function fetchHeadphonesData() {
         try {
-            const response = await fetch('http://localhost:3001/headphones');
+            const response = await fetch(`http://localhost:3001/headphones/?search=${searchTitle}&category=${searchCategory}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
@@ -54,7 +51,7 @@ export default function HomePage() {
     // useEffect
     useEffect(() => {
         fetchHeadphonesData();
-    }, []);
+    }, [searchTitle, searchCategory]);
 
 
     // RENDER
@@ -101,7 +98,7 @@ export default function HomePage() {
 
 
             {/* headphones cards */}
-            {orderedHeadphoneData.map(headphone =>
+            {orderedHeadphonesData.map(headphone =>
                 <div key={headphone.id}>
                     <h2>{headphone.title}</h2>
                     <h3>{headphone.category}</h3>
