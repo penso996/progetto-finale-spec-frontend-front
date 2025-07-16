@@ -101,12 +101,15 @@ export default function HomePage() {
             </section>
 
             {/* headphones cards */}
-            {orderedHeadphonesData.map(headphone =>
-                <div className="headphones-card"
-                    key={headphone.id}>
-                    <p><strong>{headphone.title}</strong></p>
-                    <p>{headphone.category}</p>
-                </div>
+            {orderedHeadphonesData.length === 0 ? (
+                <p className="not-found"><strong>No matching headphone...</strong></p>
+            ) : (
+                orderedHeadphonesData.map(headphone => (
+                    <div className="headphones-card" key={headphone.id}>
+                        <p><strong>{headphone.title}</strong></p>
+                        <p>{headphone.category}</p>
+                    </div>
+                ))
             )}
 
         </main>

@@ -13,6 +13,7 @@
 main {
   background-color: #fff9e9;
   padding: 0 20px;
+  min-height: calc(100vh - 60px);
 }
 
 /* pages_main_components */
@@ -90,6 +91,10 @@ input:focus {
 }
 
 /* headphones-card */
+.not-found {
+  font-size: larger;
+}
+
 .headphones-card {
   margin-bottom: 10px;
   width: 50%;
