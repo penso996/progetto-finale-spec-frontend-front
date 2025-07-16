@@ -9,6 +9,12 @@
   box-sizing: border-box;
 }
 
+/* <a> */
+.logo {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* <main> */
 main {
   background-color: #fff9e9;
