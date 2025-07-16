@@ -1,13 +1,22 @@
 // Import hooks from React
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 
 export default function Header() {
 
+    const location = useLocation();
+
+    // function to handleRefresh
+    function handleRefresh() {
+        if (location.pathname === "/") {
+            window.location.reload();
+        }
+    };
+
     // RENDER
     return (
         <header>
-            <NavLink to="/">
+            <NavLink to="/" onClick={handleRefresh}>
                 <h1>Headphones Comparator</h1>
             </NavLink>
 
