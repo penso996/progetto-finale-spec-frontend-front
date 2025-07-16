@@ -96,6 +96,25 @@ input:focus {
   cursor: pointer;
 }
 
+/* reset */
+.search button {
+  padding: 5px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(3px);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.search button:hover {
+  border-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
 /* headphones-card */
 .not-found {
   font-size: larger;

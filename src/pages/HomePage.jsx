@@ -38,6 +38,13 @@ export default function HomePage() {
         );
     };
 
+    // function to resetFilter
+    function resetFilters() {
+        setSearchTitle("");
+        setSearchCategory("");
+        setSortOrder("no");
+    };
+
     // order headphonesData
     let orderedHeadphonesData = useMemo(() => {
         let sorted = [...headphonesData];
@@ -60,7 +67,6 @@ export default function HomePage() {
     useEffect(() => {
         fetchHeadphonesData();
     }, [debouncedSearchTitle, searchCategory]);
-
 
     // RENDER
     return (
@@ -98,6 +104,9 @@ export default function HomePage() {
                         <i className="fa-solid fa-sort-up"></i>
                     ) : null}
                 </div>
+
+                {/* reset */}
+                <button onClick={resetFilters}>Reset</button>
             </section>
 
             {/* headphones cards */}
