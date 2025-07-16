@@ -68,7 +68,6 @@ export default function HomePage() {
 
             {/* input, category and sort */}
             <section className="search">
-
                 {/* input */}
                 <input type="text"
                     placeholder="Search by name"
@@ -99,17 +98,14 @@ export default function HomePage() {
                         <i className="fa-solid fa-sort-up"></i>
                     ) : null}
                 </div>
-
             </section>
-
-
-
 
             {/* headphones cards */}
             {orderedHeadphonesData.map(headphone =>
-                <div key={headphone.id}>
-                    <h2>{headphone.title}</h2>
-                    <h3>{headphone.category}</h3>
+                <div className="headphones-card"
+                    key={headphone.id}>
+                    <p><strong>{headphone.title}</strong></p>
+                    <p>{headphone.category}</p>
                 </div>
             )}
 
