@@ -26,7 +26,7 @@ export default function HomePage() {
             const data = await response.json();
             setHeadphonesData(data);
         } catch (error) {
-            console.error('Error fetching dats', error);
+            console.error('Error fetching data', error);
         }
     };
 
@@ -116,7 +116,7 @@ export default function HomePage() {
             ) : (
                 orderedHeadphonesData.map(headphone => (
                     <div className="headphones-card" key={headphone.id}>
-                        <p><strong>{headphone.title}</strong></p>
+                        <p><strong>{headphone.title.toUpperCase()}</strong></p>
                         <p>{headphone.category.toUpperCase()}</p>
                         <NavLink to={`/headphones/${headphone.id}`}>
                             See complete spec sheets

@@ -1,0 +1,52 @@
+// Import hooks from React
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+
+export default function HeadphoneDetail() {
+
+    // useState to manage headphoneData
+    const { id } = useParams();
+    const [headphoneData, setHeadphoneData] = useState(null);
+
+    // useEffect and function to fetchHeadphoneData
+    useEffect(() => {
+        async function fetchHeadphoneData() {
+            try {
+                const response = await fetch(`http://localhost:3001/headphones/${id}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                setHeadphoneData(data.headphone);
+            } catch (error) {
+                console.error('Error fetching data', error);
+            }
+        };
+        fetchHeadphoneData();
+    }, [id]);
+
+    // RENDER
+    return (
+        <main>
+            {!headphoneData ? (
+                <p className="loading"><strong>Loading data...</strong></p>
+            ) : (
+                <div className="headphone-card">
+                    <div className="headphone-card-data">
+                        <h2>{headphoneData.title.toUpperCase()}</h2>
+                        <p><strong>Category:</strong> {headphoneData.category.toUpperCase()}</p>
+                        <p><strong>Brand:</strong> {headphoneData.brand.toUpperCase()}</p>
+                        <p><strong>Type:</strong> {headphoneData.type.toUpperCase()}</p>
+                        <p><strong>Wireless:</strong> {headphoneData.isWireless ? "YES" : "NO"}</p>
+                        <p><strong>Weight:</strong> {headphoneData.weight}</p>
+                        <p><strong>Price:</strong> ${headphoneData.retailPrice}</p>
+                    </div>
+                    <div className="headphone-card-image">
+                        <img src={headphoneData.imageUrl} alt={headphoneData.title} width={200} />
+                    </div>
+                </div>
+            )}
+        </main>
+    );
+}

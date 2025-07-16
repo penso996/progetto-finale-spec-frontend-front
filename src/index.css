@@ -40,6 +40,26 @@ header i {
 }
 
 /* pages */
+/* HeadphoneDetail.jsx */
+.loading {
+  font-size: larger;
+}
+
+.headphone-card {
+  width: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+}
+
+.headphone-card p {
+  font-size: larger;
+}
+
 /* HomePage.jsx */
 .search {
   display: flex;
