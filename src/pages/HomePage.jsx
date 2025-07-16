@@ -8,6 +8,7 @@ export default function HomePage() {
     const [headphonesData, setHeadphonesData] = useState([]);
 
     const [searchTitle, setSearchTitle] = useState("");
+    const [debouncedSearchTitle, setDebouncedSearchTitle] = useState("");
 
     const categories = ["Over-Ear", "On-Ear", "In-Ear"];
     const [searchCategory, setSearchCategory] = useState("");
@@ -17,7 +18,7 @@ export default function HomePage() {
     // function to fetch headphonesData
     async function fetchHeadphonesData() {
         try {
-            const response = await fetch(`http://localhost:3001/headphones/?search=${searchTitle}&category=${searchCategory}`);
+            const response = await fetch(`http://localhost:3001/headphones/?search=${debouncedSearchTitle}&category=${searchCategory}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
@@ -50,8 +51,15 @@ export default function HomePage() {
 
     // useEffect
     useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedSearchTitle(searchTitle);
+        }, 500);
+        return () => clearTimeout(handler);
+    }, [searchTitle]);
+
+    useEffect(() => {
         fetchHeadphonesData();
-    }, [searchTitle, searchCategory]);
+    }, [debouncedSearchTitle, searchCategory]);
 
 
     // RENDER
