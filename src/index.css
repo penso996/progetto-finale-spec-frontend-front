@@ -1,10 +1,59 @@
 /* GENERAL RULES */
 :root {
-  font-family: "Open Sans", serif;
+  font-family: "Poppins", sans-serif;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* <main> */
+main {
+  background-color: #fff9e9;
+  padding: 0 20px;
+}
+
+/* pages_main_components */
+/* Header.jsx */
+header {
+  height: 60px;
+  border-bottom: solid 1px black;
+  margin-bottom: 5px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #845831;
+  color: white;
+}
+
+header i {
+  color: #d61414;
+}
+
+/* pages */
+/* HomePage.jsx */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.search input {
+  padding: 5px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(3px);
+  font-family: inherit;
+}
+
+input:focus {
+  border-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
