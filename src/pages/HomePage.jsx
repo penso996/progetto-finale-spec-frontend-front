@@ -5,18 +5,37 @@ import { useEffect, useState } from "react";
 export default function HomePage() {
 
     // useState to manage headphonesData
-    const [headphoneData, setHeadphoneData] = useState([]);
+    const [headphonesData, setHeadphonesData] = useState([]);
 
     const [searchTitle, setSearchTitle] = useState("");
 
     const categories = ["Over-Ear", "On-Ear", "In-Ear"];
     const [searchCategory, setSearchCategory] = useState("");
 
+    const [sortOrder, setSortOrder] = useState("no");
 
-    const filteredHeadphoneData = headphoneData.filter(headphone =>
+    // filtered headphonesData
+    const filteredHeadphoneData = headphonesData.filter(headphone =>
         headphone.title.toLowerCase().includes(searchTitle.toLowerCase()) &&
         (!searchCategory || headphone.category.toLowerCase() === searchCategory.toLowerCase())
     );
+
+    // function to order headphonesData
+    function toggleSortOrder() {
+        setSortOrder(prev =>
+            prev === "no" ? "asc" :
+                prev === "asc" ? "desc" :
+                    "no"
+        );
+    };
+
+    // orderEd headphonesData
+    let orderedHeadphoneData = [...filteredHeadphoneData];
+    if (sortOrder === "asc") {
+        orderedHeadphoneData.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortOrder === "desc") {
+        orderedHeadphoneData.sort((a, b) => b.title.localeCompare(a.title));
+    };
 
     // function to fetch headphonesData
     async function fetchHeadphonesData() {
@@ -26,7 +45,7 @@ export default function HomePage() {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const data = await response.json();
-            setHeadphoneData(data);
+            setHeadphonesData(data);
         } catch (error) {
             console.error('Error fetching dats', error);
         }
@@ -57,10 +76,19 @@ export default function HomePage() {
                         {cat}
                     </option>
                 ))}
-
             </select>
 
-            {filteredHeadphoneData.map(headphone =>
+            <div onClick={toggleSortOrder}>
+                {sortOrder === "no" ? (
+                    <i className="fa-solid fa-sort"></i>
+                ) : sortOrder === "asc" ? (
+                    <i className="fa-solid fa-sort-down"></i>
+                ) : sortOrder === "desc" ? (
+                    <i className="fa-solid fa-sort-up"></i>
+                ) : null}
+            </div>
+
+            {orderedHeadphoneData.map(headphone =>
                 <div key={headphone.id}>
                     <h2>{headphone.title}</h2>
                     <h3>{headphone.category}</h3>
