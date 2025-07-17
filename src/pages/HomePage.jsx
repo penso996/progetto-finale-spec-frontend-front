@@ -1,15 +1,15 @@
 // Import hooks from React
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-// Import hooks from custom_hooks
-import { useFavorites } from "../custom_hooks/useFavorites";
+// Import GlobalContext from context
+import GlobalContext from "../context/GlobalContext";
 
 
 export default function HomePage() {
 
-    // custom hook to manage favorites
-    const { favorites, toggleFavorite, isFavorite } = useFavorites();
+    // useContext
+    const { isFavorite, toggleFavorite } = useContext(GlobalContext);
 
     // useState to manage headphonesData
     const [headphonesData, setHeadphonesData] = useState([]);
