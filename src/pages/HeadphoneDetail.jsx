@@ -2,6 +2,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+// Import assets
+import freqres from "../assets/freqres.png";
+
 
 export default function HeadphoneDetail() {
 
@@ -34,14 +37,19 @@ export default function HeadphoneDetail() {
             ) : (
                 <div className="headphone-card">
                     <div className="headphone-card-data">
-                        <h2>{headphoneData.title.toUpperCase()}</h2>
-                        <p><strong>Category:</strong> {headphoneData.category.toUpperCase()}</p>
-                        <p><strong>Brand:</strong> {headphoneData.brand.toUpperCase()}</p>
-                        <p><strong>Type:</strong> {headphoneData.type.toUpperCase()}</p>
-                        <p><strong>Wireless:</strong> {headphoneData.isWireless ? "YES" : "NO"}</p>
-                        <p><strong>Weight:</strong> {headphoneData.weight}</p>
-                        <p><strong>Price:</strong> ${headphoneData.retailPrice}</p>
-                        <p><strong>Frequency Profile:</strong> {headphoneData.FrequencyProfile}</p>
+                        <div>
+                            <h2>{headphoneData.title.toUpperCase()}</h2>
+                            <p><strong>Category:</strong> {headphoneData.category.toUpperCase()}</p>
+                            <p><strong>Brand:</strong> {headphoneData.brand.toUpperCase()}</p>
+                            <p><strong>Type:</strong> {headphoneData.type.toUpperCase()}</p>
+                            <p><strong>Wireless:</strong> {headphoneData.isWireless ? "YES" : "NO"}</p>
+                            <p><strong>Weight:</strong> {headphoneData.weight}</p>
+                            <p><strong>Price:</strong> ${headphoneData.retailPrice}</p>
+                        </div>
+                        <div>
+                            <p><strong>Frequency Profile:</strong></p>
+                            <img className="frequency-profile" src={freqres} alt={headphoneData.FrequencyProfile} />
+                        </div>
                     </div>
                     <div className="headphone-card-image">
                         <img src={headphoneData.imageUrl} alt={headphoneData.title} />

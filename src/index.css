@@ -106,6 +106,28 @@ header i {
   object-fit: contain;
 }
 
+.headphone-card-data {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.frequency-profile {
+  width: 300px;
+}
+
+@media (max-width: 768px) {
+  .frequency-profile {
+    width: 200px;
+  }
+}
+
+@media (max-width: 575px) {
+  .frequency-profile {
+    width: 120px;
+  }
+}
+
 /* HomePage.jsx */
 .homepage {
   display: flex;
