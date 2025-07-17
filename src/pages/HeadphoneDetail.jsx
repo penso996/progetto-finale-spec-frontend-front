@@ -39,16 +39,16 @@ export default function HeadphoneDetail() {
                     <div className="headphone-card-data">
                         <div>
                             <h2>{headphoneData.title.toUpperCase()}</h2>
-                            <p><strong>Category:</strong> {headphoneData.category.toUpperCase()}</p>
-                            <p><strong>Brand:</strong> {headphoneData.brand.toUpperCase()}</p>
-                            <p><strong>Type:</strong> {headphoneData.type.toUpperCase()}</p>
-                            <p><strong>Wireless:</strong> {headphoneData.isWireless ? "YES" : "NO"}</p>
-                            <p><strong>Weight:</strong> {headphoneData.weight}</p>
-                            <p><strong>Price:</strong> ${headphoneData.retailPrice}</p>
+                            <p><strong>Category:</strong><br />{headphoneData.category.toUpperCase()}</p>
+                            <p><strong>Brand:</strong><br />{headphoneData.brand.toUpperCase()}</p>
+                            <p><strong>Type:</strong><br />{headphoneData.type.toUpperCase()}</p>
+                            <p><strong>Wireless:</strong><br />{headphoneData.isWireless ? "YES" : "NO"}</p>
+                            <p><strong>Weight:</strong><br />{headphoneData.weight}</p>
+                            <p><strong>Price:</strong><br />${headphoneData.retailPrice}</p>
                         </div>
                         <div>
                             <p><strong>Frequency Profile:</strong></p>
-                            <img className="frequency-profile" src={freqres} alt={headphoneData.FrequencyProfile} />
+                            {/* <img className="frequency-profile" src={freqres} alt={headphoneData.FrequencyProfile} /> */}
                         </div>
                     </div>
                     <div className="headphone-card-image">
