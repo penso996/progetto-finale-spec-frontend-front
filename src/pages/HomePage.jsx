@@ -1,5 +1,5 @@
 // Import hooks from React
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 // Import GlobalContext from context
@@ -8,33 +8,19 @@ import GlobalContext from "../context/GlobalContext";
 
 export default function HomePage() {
 
-    // useContext
-    const { isFavorite, toggleFavorite } = useContext(GlobalContext);
-
-    // useState to manage headphonesData
-    const [headphonesData, setHeadphonesData] = useState([]);
-
-    const [searchTitle, setSearchTitle] = useState("");
-    const [debouncedSearchTitle, setDebouncedSearchTitle] = useState("");
-
+    // categories for dropdown menù
     const categories = ["Over-Ear", "On-Ear", "In-Ear"];
-    const [searchCategory, setSearchCategory] = useState("");
 
+    // useContext
+    const {
+        toggleFavorite, isFavorite,
+        headphonesData,
+        searchTitle, setSearchTitle,
+        searchCategory, setSearchCategory
+    } = useContext(GlobalContext);
+
+    // useState to manage headphonesData locally
     const [sortOrder, setSortOrder] = useState("no");
-
-    // function to fetch headphonesData
-    async function fetchHeadphonesData() {
-        try {
-            const response = await fetch(`http://localhost:3001/headphones/?search=${debouncedSearchTitle}&category=${searchCategory}`);
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            const data = await response.json();
-            setHeadphonesData(data);
-        } catch (error) {
-            console.error('Error fetching data', error);
-        }
-    };
 
     // function to toggleSortOrder
     function toggleSortOrder() {
@@ -45,14 +31,7 @@ export default function HomePage() {
         );
     };
 
-    // function to resetFilter
-    function resetFilters() {
-        setSearchTitle("");
-        setSearchCategory("");
-        setSortOrder("no");
-    };
-
-    // order headphonesData
+    // apply optimized sorting
     let orderedHeadphonesData = useMemo(() => {
         let sorted = [...headphonesData];
         if (sortOrder === "asc") {
@@ -63,17 +42,12 @@ export default function HomePage() {
         return sorted;
     }, [headphonesData, sortOrder]);
 
-    // useEffect
-    useEffect(() => {
-        const handler = setTimeout(() => {
-            setDebouncedSearchTitle(searchTitle);
-        }, 500);
-        return () => clearTimeout(handler);
-    }, [searchTitle]);
-
-    useEffect(() => {
-        fetchHeadphonesData();
-    }, [debouncedSearchTitle, searchCategory]);
+    // function to resetFilter
+    function resetFilters() {
+        setSearchTitle("");
+        setSearchCategory("");
+        setSortOrder("no");
+    };
 
     // RENDER
     return (
