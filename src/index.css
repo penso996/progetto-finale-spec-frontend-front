@@ -76,13 +76,14 @@ header i {
 
 .headphone-card {
   width: 60%;
+  display: flex;
+  justify-content: space-between;
+
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 16px;
   padding: 10px 20px;
   background-color: rgba(255, 255, 255, 0.6);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: space-between;
 }
 
 @media (max-width: 992px) {
@@ -94,8 +95,14 @@ header i {
 @media (max-width: 575px) {
   .headphone-card {
     flex-direction: column;
-    justify-content: space-between;
+    gap: 50px;
   }
+}
+
+.headphone-card-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .headphone-card-image {
@@ -119,12 +126,6 @@ header i {
   height: 100%;
   object-fit: contain;
   border-radius: 16px
-}
-
-.headphone-card-data {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 /* .frequency-profile {
