@@ -12,6 +12,16 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 100%;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 70%;
+  }
+}
+
 /* <a> */
 a {
   text-decoration: none;
@@ -21,8 +31,14 @@ a {
 /* <main> */
 main {
   background-color: var(--color-primary-light);
-  padding: 0 20px;
+  padding: 20px 40px;
   min-height: calc(100vh - 60px);
+}
+
+@media (max-width: 992px) {
+  main {
+    padding: 20px;
+  }
 }
 
 /* pages_main_components */
@@ -74,11 +90,27 @@ header i {
 }
 
 /* HomePage.jsx */
+.homepage {
+  display: flex;
+}
+
 .search {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 20px;
-  padding: 10px 0;
+  width: 300px;
+  margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+  .search {
+    max-width: 40%;
+  }
+}
+
+.search-title {
+  text-align: center;
+  font-weight: 600;
 }
 
 /* input */
@@ -125,8 +157,19 @@ input:focus {
 }
 
 /* sort */
-.search i {
+.sort {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  backdrop-filter: blur(3px);
+  font-size: small;
 }
 
 /* reset */
@@ -149,13 +192,25 @@ input:focus {
 }
 
 /* headphones-card */
+.headphones-section {
+  width: 50%;
+  height: calc(100vh - 100px);
+  overflow: scroll;
+}
+
+@media (max-width: 768px) {
+  .headphones-section {
+    width: 100%;
+  }
+}
+
 .not-found {
   font-size: larger;
 }
 
 .headphones-card {
   margin-bottom: 10px;
-  width: 50%;
+  width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 16px;
   padding: 10px 20px;

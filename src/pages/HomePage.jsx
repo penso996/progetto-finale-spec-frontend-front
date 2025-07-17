@@ -71,10 +71,11 @@ export default function HomePage() {
 
     // RENDER
     return (
-        <main>
+        <main className="homepage">
 
             {/* input, category and sort */}
             <section className="search">
+                <p className="search-title">Filters</p>
                 {/* input */}
                 <input type="text"
                     placeholder="Search by name"
@@ -96,7 +97,8 @@ export default function HomePage() {
                 </select>
 
                 {/* sort */}
-                <div onClick={toggleSortOrder}>
+                <div className="sort" onClick={toggleSortOrder}>
+                    <p>Sort Asc/Desc</p>
                     {sortOrder === "no" ? (
                         <i className="fa-solid fa-sort"></i>
                     ) : sortOrder === "asc" ? (
@@ -111,19 +113,21 @@ export default function HomePage() {
             </section>
 
             {/* headphones cards */}
-            {orderedHeadphonesData.length === 0 ? (
-                <p className="not-found"><strong>No matching headphones...</strong></p>
-            ) : (
-                orderedHeadphonesData.map(headphone => (
-                    <div className="headphones-card" key={headphone.id}>
-                        <p><strong>{headphone.title.toUpperCase()}</strong></p>
-                        <p>{headphone.category.toUpperCase()}</p>
-                        <NavLink to={`/headphones/${headphone.id}`}>
-                            See complete spec sheets
-                        </NavLink>
-                    </div>
-                ))
-            )}
+            <section className="headphones-section">
+                {orderedHeadphonesData.length === 0 ? (
+                    <p className="not-found"><strong>No matching headphones...</strong></p>
+                ) : (
+                    orderedHeadphonesData.map(headphone => (
+                        <div className="headphones-card" key={headphone.id}>
+                            <p><strong>{headphone.title.toUpperCase()}</strong></p>
+                            <p>{headphone.category.toUpperCase()}</p>
+                            <NavLink to={`/headphones/${headphone.id}`}>
+                                See complete spec sheets
+                            </NavLink>
+                        </div>
+                    ))
+                )}
+            </section>
 
         </main>
     );
