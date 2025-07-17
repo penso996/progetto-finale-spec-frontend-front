@@ -94,8 +94,7 @@ header i {
 @media (max-width: 575px) {
   .headphone-card {
     flex-direction: column;
-    justify-content: flex-start;
-    gap: 50px;
+    justify-content: space-between;
   }
 }
 
@@ -125,8 +124,7 @@ header i {
 .headphone-card-data {
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  margin-bottom: 40px;
+  justify-content: space-between;
 }
 
 /* .frequency-profile {
