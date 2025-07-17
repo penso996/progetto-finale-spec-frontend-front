@@ -2,8 +2,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 
+// Import hooks from custom_hooks
+import { useFavorites } from "../custom_hooks/useFavorites";
+
 
 export default function HomePage() {
+
+    // custom hook to manage favorites
+    const { favorites, toggleFavorite, isFavorite } = useFavorites();
 
     // useState to manage headphonesData
     const [headphonesData, setHeadphonesData] = useState([]);
@@ -124,6 +130,9 @@ export default function HomePage() {
                             <NavLink to={`/headphones/${headphone.id}`}>
                                 <u>See complete spec sheets</u>
                             </NavLink>
+                            <p onClick={() => toggleFavorite(headphone.id)}>
+                                {isFavorite(headphone.id) ? <i className="fa-solid fa-heart-circle-minus"></i> : <i className="fa-solid fa-heart-circle-plus"></i>}
+                            </p>
                         </div>
                     ))
                 )}
