@@ -75,7 +75,7 @@ header i {
 }
 
 .headphone-card {
-  width: 50%;
+  width: 60%;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 16px;
   padding: 10px 20px;
@@ -85,8 +85,24 @@ header i {
   justify-content: space-between;
 }
 
-.headphone-card p {
-  font-size: larger;
+@media (max-width: 992px) {
+  .headphone-card {
+    width: 100%;
+  }
+}
+
+.headphone-card-image {
+  width: 300px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+}
+
+.headphone-card-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: contain;
 }
 
 /* HomePage.jsx */
