@@ -1,6 +1,6 @@
 // Import hooks from React
 import { NavLink, useLocation } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 // Import GlobalContext from context
 import GlobalContext from "../context/GlobalContext";

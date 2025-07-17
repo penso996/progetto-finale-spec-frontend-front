@@ -4,6 +4,7 @@ import GlobalContext from "./GlobalContext.jsx";
 // Import hooks from custom_hooks
 import { useFavorites } from "../custom_hooks/useFavorites";
 
+
 export default function GlobalContextProvider({ children }) {
 
     // custom hook to manage favorites
