@@ -41,9 +41,10 @@ export default function HeadphoneDetail() {
                         <p><strong>Wireless:</strong> {headphoneData.isWireless ? "YES" : "NO"}</p>
                         <p><strong>Weight:</strong> {headphoneData.weight}</p>
                         <p><strong>Price:</strong> ${headphoneData.retailPrice}</p>
+                        <p><strong>Frequency Profile:</strong> {headphoneData.FrequencyProfile}</p>
                     </div>
                     <div className="headphone-card-image">
-                        <img src={headphoneData.imageUrl} alt={headphoneData.title} width={200} />
+                        <img src={headphoneData.imageUrl} alt={headphoneData.title} />
                     </div>
                 </div>
             )}

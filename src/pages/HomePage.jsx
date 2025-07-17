@@ -122,7 +122,7 @@ export default function HomePage() {
                             <p><strong>{headphone.title.toUpperCase()}</strong></p>
                             <p>{headphone.category.toUpperCase()}</p>
                             <NavLink to={`/headphones/${headphone.id}`}>
-                                See complete spec sheets
+                                <u>See complete spec sheets</u>
                             </NavLink>
                         </div>
                     ))
