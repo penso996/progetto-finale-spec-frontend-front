@@ -20,7 +20,7 @@ export default function Header() {
                 <h1>Headphones Comparator</h1>
             </NavLink>
 
-            <i className="fa-solid fa-heart"></i>
+            <i className="fa-solid fa-heart fa-2x"></i>
         </header>
     );
 }
