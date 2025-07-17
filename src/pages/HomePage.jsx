@@ -131,7 +131,9 @@ export default function HomePage() {
                                 <u>See complete spec sheets</u>
                             </NavLink>
                             <p onClick={() => toggleFavorite(headphone.id)}>
-                                {isFavorite(headphone.id) ? <i className="fa-solid fa-heart-circle-minus"></i> : <i className="fa-solid fa-heart-circle-plus"></i>}
+                                {isFavorite(headphone.id) ?
+                                    <i className="fa-solid fa-heart-circle-minus" style={{ color: "var(--color-red)" }}></i> :
+                                    <i className="fa-solid fa-heart-circle-plus" style={{ color: "var(--color-red)" }}></i>}
                             </p>
                         </div>
                     ))
