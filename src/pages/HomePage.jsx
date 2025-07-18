@@ -58,7 +58,7 @@ export default function HomePage() {
                 <p className="search-title">Filters</p>
                 {/* input */}
                 <input type="text"
-                    placeholder="Search by name"
+                    placeholder="Search by model name"
                     value={searchTitle}
                     onChange={e => setSearchTitle(e.target.value)}
                 />
@@ -68,7 +68,7 @@ export default function HomePage() {
                     value={searchCategory}
                     onChange={e => setSearchCategory(e.target.value)}>
 
-                    <option value="">--</option>
+                    <option value="">Headphone Type</option>
                     {categories.map((cat, ind) => (
                         <option key={ind} value={cat}>
                             {cat}
@@ -78,18 +78,24 @@ export default function HomePage() {
 
                 {/* sort */}
                 <div className="sort" onClick={toggleSortOrder}>
-                    <p>Sort Asc/Desc</p>
+                    <p>
+                        {sortOrder === "no"
+                            ? "Sort by Name"
+                            : sortOrder === "asc"
+                                ? "Sort by Name: A–Z"
+                                : "Sort by Name: Z–A"}
+                    </p>
                     {sortOrder === "no" ? (
                         <i className="fa-solid fa-sort"></i>
                     ) : sortOrder === "asc" ? (
                         <i className="fa-solid fa-sort-down"></i>
-                    ) : sortOrder === "desc" ? (
+                    ) : (
                         <i className="fa-solid fa-sort-up"></i>
-                    ) : null}
+                    )}
                 </div>
 
                 {/* reset */}
-                <button onClick={resetFilters}>Reset</button>
+                <button onClick={resetFilters}>Reset Filters</button>
             </section>
 
             {/* headphones cards */}
