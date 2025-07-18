@@ -120,6 +120,12 @@ header {
   justify-content: space-between;
 }
 
+@media (max-width: 575px) {
+  .headphone-card-data {
+    gap: 30px;
+  }
+}
+
 .headphone-card-image {
   width: 300px;
   height: 400px;

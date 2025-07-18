@@ -52,6 +52,7 @@ export default function HeadphoneDetail() {
                             {/* <img className="frequency-profile" src={freqres} alt={headphoneData.FrequencyProfile} /> */}
                         </div>
                     </div>
+
                     <div className="headphone-card-image">
                         <img src={headphoneData.imageUrl} alt={headphoneData.title} />
                     </div>
