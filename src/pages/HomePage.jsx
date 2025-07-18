@@ -5,11 +5,11 @@ import { NavLink } from "react-router-dom";
 // Import GlobalContext from context
 import GlobalContext from "../context/GlobalContext";
 
+// categories for dropdown menù
+const categories = ["Over-Ear", "On-Ear", "In-Ear"];
+
 
 export default function HomePage() {
-
-    // categories for dropdown menù
-    const categories = ["Over-Ear", "On-Ear", "In-Ear"];
 
     // useContext
     const {
