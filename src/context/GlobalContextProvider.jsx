@@ -6,6 +6,7 @@ import GlobalContext from "./GlobalContext.jsx";
 
 // Import hooks from custom_hooks
 import { useFavorites } from "../custom_hooks/useFavorites";
+import { useDebounce } from "../custom_hooks/useDebounce.jsx";
 
 
 export default function GlobalContextProvider({ children }) {
@@ -17,7 +18,8 @@ export default function GlobalContextProvider({ children }) {
     const [headphonesData, setHeadphonesData] = useState([]);
 
     const [searchTitle, setSearchTitle] = useState("");
-    const [debouncedSearchTitle, setDebouncedSearchTitle] = useState("");
+    // custom hook to debounce searchTitle
+    const debouncedSearchTitle = useDebounce(searchTitle, 500);
 
     const [searchCategory, setSearchCategory] = useState("");
 
@@ -36,13 +38,6 @@ export default function GlobalContextProvider({ children }) {
     };
 
     // useEffect
-    useEffect(() => {
-        const handler = setTimeout(() => {
-            setDebouncedSearchTitle(searchTitle);
-        }, 500);
-        return () => clearTimeout(handler);
-    }, [searchTitle]);
-
     useEffect(() => {
         fetchHeadphonesData();
     }, [debouncedSearchTitle, searchCategory]);
