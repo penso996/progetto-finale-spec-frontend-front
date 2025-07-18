@@ -117,8 +117,7 @@ header {
 .headphone-card-data {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 10px;
+  gap: 20px;
 }
 
 .headphone-card-image {
@@ -127,7 +126,7 @@ header {
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 16px;
-  margin-top: 60px;
+  margin: auto 0;
 }
 
 @media (max-width: 575px) {
