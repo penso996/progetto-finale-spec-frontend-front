@@ -1,5 +1,6 @@
 // Import hooks from React
 import { useEffect, useState } from "react";
+
 // Import GlobalContext from context
 import GlobalContext from "./GlobalContext.jsx";
 
@@ -34,6 +35,7 @@ export default function GlobalContextProvider({ children }) {
         }
     };
 
+    // useEffect
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedSearchTitle(searchTitle);
@@ -41,12 +43,11 @@ export default function GlobalContextProvider({ children }) {
         return () => clearTimeout(handler);
     }, [searchTitle]);
 
-    // useEffect
     useEffect(() => {
         fetchHeadphonesData();
     }, [debouncedSearchTitle, searchCategory]);
 
-    // EXPORT
+    // PROVIDER
     return (
         <GlobalContext.Provider value={{
             favorites, toggleFavorite, isFavorite,
