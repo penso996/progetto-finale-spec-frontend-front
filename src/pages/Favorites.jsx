@@ -14,6 +14,7 @@ export default function Favorites() {
         headphonesData
     } = useContext(GlobalContext);
 
+    // filter headphonesData with favorites
     const favoritesHeadphones = headphonesData.filter(h => favorites.includes(h.id));
 
     // RENDER
