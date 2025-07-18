@@ -35,7 +35,7 @@ export default function HeadphoneDetail() {
     return (
         <main>
             {!headphoneData ? (
-                <p className="loading"><strong>Loading data...</strong></p>
+                <p><strong>Loading data...</strong></p>
             ) : (
                 <div className="headphone-card">
                     <div className="headphone-card-data">

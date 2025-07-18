@@ -12,13 +12,9 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 100%;
-}
-
 @media (max-width: 768px) {
   html {
-    font-size: 70%;
+    font-size: 80%;
   }
 }
 
@@ -45,11 +41,11 @@ main {
 /* Header.jsx */
 header {
   height: 60px;
-  border-bottom: solid 1px black;
   padding: 0 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: solid 1px black;
   background-color: var(--color-primary-dark);
   color: white;
 }
@@ -66,7 +62,6 @@ header {
 
 .favorite-icon {
   position: relative;
-  display: inline-block;
 }
 
 .favorite-icon i {
@@ -86,17 +81,13 @@ header {
 
 /* pages */
 /* HeadphoneDetail.jsx */
-.loading {
-  font-size: larger;
-}
-
 .headphone-card {
   width: 60%;
   display: flex;
   justify-content: space-between;
+  padding: 10px 20px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 16px;
-  padding: 10px 20px;
   background-color: rgba(255, 255, 255, 0.6);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
@@ -123,17 +114,16 @@ header {
 .headphone-card-image {
   width: 300px;
   height: 400px;
+  margin: auto 0;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 16px;
-  margin: auto 0;
 }
 
 @media (max-width: 575px) {
   .headphone-card-image {
     width: 200px;
     height: 300px;
-    margin: 0;
   }
 }
 
