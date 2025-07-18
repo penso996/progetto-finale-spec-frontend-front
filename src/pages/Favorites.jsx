@@ -56,7 +56,10 @@ export default function Favorites() {
                     ))
                 )}
 
-                <div className="compare-toast">Compare Now</div>
+                {/* comparison-arrow */}
+                <div className="comparison-arrow">
+                    <i className="fa-solid fa-arrow-right"></i>
+                </div>
 
                 {/* toast */}
                 {toast && <div className="toast">{toast}</div>}
