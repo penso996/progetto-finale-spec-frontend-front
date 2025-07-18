@@ -58,7 +58,7 @@ export default function HomePage() {
                 <p className="search-title">Filters</p>
                 {/* input */}
                 <input type="text"
-                    placeholder="Search by model name"
+                    placeholder="Search by Model Name"
                     value={searchTitle}
                     onChange={e => setSearchTitle(e.target.value)}
                 />
@@ -80,10 +80,10 @@ export default function HomePage() {
                 <div className="sort" onClick={toggleSortOrder}>
                     <p>
                         {sortOrder === "no"
-                            ? "Sort by Name"
+                            ? "Sort by Model Name"
                             : sortOrder === "asc"
-                                ? "Sort by Name: A–Z"
-                                : "Sort by Name: Z–A"}
+                                ? "Sort by Model Name: A–Z"
+                                : "Sort by Model Name: Z–A"}
                     </p>
                     {sortOrder === "no" ? (
                         <i className="fa-solid fa-sort"></i>

@@ -38,9 +38,10 @@ export default function HeadphoneDetail() {
                 <div className="headphone-card">
                     <div className="headphone-card-data">
                         <div>
+                            <h3>{headphoneData.brand.toUpperCase()}</h3>
                             <h2>{headphoneData.title.toUpperCase()}</h2>
+                            <hr />
                             <p><strong>Category:</strong><br />{headphoneData.category.toUpperCase()}</p>
-                            <p><strong>Brand:</strong><br />{headphoneData.brand.toUpperCase()}</p>
                             <p><strong>Type:</strong><br />{headphoneData.type.toUpperCase()}</p>
                             <p><strong>Wireless:</strong><br />{headphoneData.isWireless ? "YES" : "NO"}</p>
                             <p><strong>Weight:</strong><br />{headphoneData.weight}</p>
