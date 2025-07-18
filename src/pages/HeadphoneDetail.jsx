@@ -3,8 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 // Import assets
-import freqres from "../assets/freqres.png";
-
+import { graph } from "../assets/graph";
 
 export default function HeadphoneDetail() {
 
@@ -29,6 +28,9 @@ export default function HeadphoneDetail() {
         fetchHeadphoneData();
     }, [id]);
 
+    // get frequency profile image from graph
+    const headphoneFreqImg = graph[headphoneData?.frequencyProfile];
+
     // RENDER
     return (
         <main>
@@ -49,7 +51,11 @@ export default function HeadphoneDetail() {
                         </div>
                         <div>
                             <p><strong>Frequency Profile:</strong></p>
-                            {/* <img className="frequency-profile" src={freqres} alt={headphoneData.FrequencyProfile} /> */}
+                            <img
+                                className="frequency-profile"
+                                src={headphoneFreqImg}
+                                alt={headphoneData.frequencyProfile}
+                            />
                         </div>
                     </div>
 
