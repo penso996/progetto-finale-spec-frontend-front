@@ -56,6 +56,8 @@ export default function Favorites() {
                     ))
                 )}
 
+                <div className="compare-toast">Compare Now</div>
+
                 {/* toast */}
                 {toast && <div className="toast">{toast}</div>}
             </section>

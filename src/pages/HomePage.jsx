@@ -108,14 +108,14 @@ export default function HomePage() {
                     {selectedHeadphones[0] ? (
                         <strong>{selectedHeadphones[0].title}</strong>
                     ) : (
-                        <i>Add first headphone</i>
+                        <i><small>Add first headphone</small></i>
                     )}
                 </p>
                 <p>
                     {selectedHeadphones[1] ? (
                         <strong>{selectedHeadphones[1].title}</strong>
                     ) : (
-                        <i>Add second headphone</i>
+                        <i><small>Add second headphone</small></i>
                     )}
                 </p>
                 <button
