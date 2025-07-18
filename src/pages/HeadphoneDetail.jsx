@@ -58,7 +58,6 @@ export default function HeadphoneDetail() {
                             />
                         </div>
                     </div>
-
                     <div className="headphone-card-image">
                         <img src={headphoneData.imageUrl} alt={headphoneData.title} />
                     </div>
