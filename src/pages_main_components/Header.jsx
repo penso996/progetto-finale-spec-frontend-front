@@ -28,10 +28,12 @@ export default function Header() {
                 <h1>Headphones Comparator</h1>
             </NavLink>
 
-            <div className="favorite-icon">
-                <i className="fa-solid fa-heart fa-2x"></i>
-                {favorites.length > 0 && <span className="badge">{favorites.length}</span>}
-            </div>
+            <NavLink to="/favorites-headphones">
+                <div className="favorite-icon">
+                    <i className="fa-solid fa-heart fa-2x"></i>
+                    {favorites.length > 0 && <span className="badge">{favorites.length}</span>}
+                </div>
+            </NavLink>
         </header>
     );
 }
