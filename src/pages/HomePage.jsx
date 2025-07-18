@@ -13,7 +13,9 @@ export default function HomePage() {
 
     // useContext
     const {
+        toast, showToast,
         toggleFavorite, isFavorite,
+        compare, toggleCompare, isSelect,
         headphonesData,
         searchTitle, setSearchTitle,
         searchCategory, setSearchCategory
@@ -49,6 +51,9 @@ export default function HomePage() {
         setSortOrder("no");
     };
 
+    // comparable headphonesData
+    const selectedHeadphones = headphonesData.filter(h => compare.includes(h.id));
+
     // RENDER
     return (
         <main className="homepage">
@@ -82,8 +87,8 @@ export default function HomePage() {
                         {sortOrder === "no"
                             ? "Sort by Model Name"
                             : sortOrder === "asc"
-                                ? "Sort by Model Name: A–Z"
-                                : "Sort by Model Name: Z–A"}
+                                ? "Sort by Model Name: A-Z"
+                                : "Sort by Model Name: Z-A"}
                     </p>
                     {sortOrder === "no" ? (
                         <i className="fa-solid fa-sort"></i>
@@ -96,6 +101,29 @@ export default function HomePage() {
 
                 {/* reset */}
                 <button onClick={resetFilters}>Reset Filters</button>
+
+                <hr />
+                <p className="search-title">Select two headpone to compare:</p>
+                <p>
+                    {selectedHeadphones[0] ? (
+                        <strong>{selectedHeadphones[0].title}</strong>
+                    ) : (
+                        <i>Add first headphone</i>
+                    )}
+                </p>
+                <p>
+                    {selectedHeadphones[1] ? (
+                        <strong>{selectedHeadphones[1].title}</strong>
+                    ) : (
+                        <i>Add second headphone</i>
+                    )}
+                </p>
+                <button
+                    onClick={resetFilters}
+                    disabled={compare.length !== 2}
+                >
+                    Compare Now
+                </button>
             </section>
 
             {/* headphones cards */}
@@ -110,14 +138,30 @@ export default function HomePage() {
                             <NavLink to={`/headphones/${headphone.id}`}>
                                 <u>See complete spec sheets</u>
                             </NavLink>
-                            <p onClick={() => toggleFavorite(headphone.id)}>
-                                {isFavorite(headphone.id) ?
-                                    <i className="fa-solid fa-heart-circle-minus" style={{ color: "var(--color-red)" }}></i> :
-                                    <i className="fa-solid fa-heart-circle-plus" style={{ color: "var(--color-red)" }}></i>}
-                            </p>
+                            <div className="fav-comp">
+                                <p onClick={() => toggleFavorite(headphone.id)}>
+                                    {isFavorite(headphone.id) ?
+                                        <i className="fa-solid fa-heart-circle-minus" style={{ color: "var(--color-red)" }}></i> :
+                                        <i className="fa-solid fa-heart-circle-plus" style={{ color: "var(--color-red)" }}></i>}
+                                </p>
+                                {(compare.length < 2 || compare.includes(headphone.id)) ? (
+                                    <p onClick={() => toggleCompare(headphone.id)}>
+                                        {isSelect(headphone.id) ?
+                                            <i className="fa-solid fa-square-check"></i> :
+                                            <i className="fa-regular fa-square-check"></i>}
+                                    </p>) : (
+                                    <p onClick={() => showToast()}>
+                                        <i className="fa-regular fa-square-check"></i>
+                                    </p>
+                                )}
+
+                            </div>
                         </div>
                     ))
                 )}
+
+                {/* toast */}
+                {toast && <div className="toast">{toast}</div>}
             </section>
 
         </main>

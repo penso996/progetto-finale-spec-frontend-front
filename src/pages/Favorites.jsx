@@ -10,7 +10,9 @@ export default function Favorites() {
 
     // useContext
     const {
+        toast, showToast,
         favorites, toggleFavorite, isFavorite,
+        compare, toggleCompare, isSelect,
         headphonesData
     } = useContext(GlobalContext);
 
@@ -23,7 +25,7 @@ export default function Favorites() {
             {/* headphones cards */}
             <section className="headphones-section">
                 {favoritesHeadphones.length === 0 ? (
-                    <p className="not-found"><strong>No favorites headphones...</strong></p>
+                    <p className="not-found"><strong>No matching headphones...</strong></p>
                 ) : (
                     favoritesHeadphones.map(headphone => (
                         <div className="headphones-card" key={headphone.id}>
@@ -32,14 +34,30 @@ export default function Favorites() {
                             <NavLink to={`/headphones/${headphone.id}`}>
                                 <u>See complete spec sheets</u>
                             </NavLink>
-                            <p onClick={() => toggleFavorite(headphone.id)}>
-                                {isFavorite(headphone.id) ?
-                                    <i className="fa-solid fa-heart-circle-minus" style={{ color: "var(--color-red)" }}></i> :
-                                    <i className="fa-solid fa-heart-circle-plus" style={{ color: "var(--color-red)" }}></i>}
-                            </p>
+                            <div className="fav-comp">
+                                <p onClick={() => toggleFavorite(headphone.id)}>
+                                    {isFavorite(headphone.id) ?
+                                        <i className="fa-solid fa-heart-circle-minus" style={{ color: "var(--color-red)" }}></i> :
+                                        <i className="fa-solid fa-heart-circle-plus" style={{ color: "var(--color-red)" }}></i>}
+                                </p>
+                                {(compare.length < 2 || compare.includes(headphone.id)) ? (
+                                    <p onClick={() => toggleCompare(headphone.id)}>
+                                        {isSelect(headphone.id) ?
+                                            <i className="fa-solid fa-square-check"></i> :
+                                            <i className="fa-regular fa-square-check"></i>}
+                                    </p>) : (
+                                    <p onClick={() => showToast()}>
+                                        <i className="fa-regular fa-square-check"></i>
+                                    </p>
+                                )}
+
+                            </div>
                         </div>
                     ))
                 )}
+
+                {/* toast */}
+                {toast && <div className="toast">{toast}</div>}
             </section>
         </main>
     );

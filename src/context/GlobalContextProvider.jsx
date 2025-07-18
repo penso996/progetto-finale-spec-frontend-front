@@ -7,12 +7,20 @@ import GlobalContext from "./GlobalContext.jsx";
 // Import hooks from custom_hooks
 import { useFavorites } from "../custom_hooks/useFavorites";
 import { useDebounce } from "../custom_hooks/useDebounce.jsx";
+import { useCompare } from "../custom_hooks/useCompare.jsx";
+import { useToast } from "../custom_hooks/useToast.jsx";
 
 
 export default function GlobalContextProvider({ children }) {
 
+    // custom hook to show toast message
+    const { toast, showToast } = useToast();
+
     // custom hook to manage favorites
     const { favorites, toggleFavorite, isFavorite } = useFavorites();
+
+    // custom hook to manage compare
+    const { compare, toggleCompare, isSelect } = useCompare();
 
     // useState to manage headphonesData
     const [headphonesData, setHeadphonesData] = useState([]);
@@ -45,7 +53,9 @@ export default function GlobalContextProvider({ children }) {
     // PROVIDER
     return (
         <GlobalContext.Provider value={{
+            toast, showToast,
             favorites, toggleFavorite, isFavorite,
+            compare, toggleCompare, isSelect,
             headphonesData,
             searchTitle, setSearchTitle,
             searchCategory, setSearchCategory
