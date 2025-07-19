@@ -101,11 +101,14 @@ export default function HomePage() {
                     ))}
                 </select>
 
-                {/* reset */}
-                <button onClick={resetFilters}>Reset Filters</button>
+                {/* reset button */}
+                <button onClick={resetFilters}
+                >Reset Filters
+                </button>
 
                 <hr />
 
+                {/* compare */}
                 <p className="search-title">Select two headpone to compare:</p>
                 <p>
                     {comparableHeadphonesData[0] ? (
@@ -122,12 +125,11 @@ export default function HomePage() {
                     )}
                 </p>
 
-                {/* compare */}
+                {/* compare button */}
                 <button
                     onClick={resetFilters}
                     disabled={compare.length !== 2}
-                >
-                    Compare Now
+                >Compare Now
                 </button>
 
             </section>
