@@ -17,7 +17,7 @@ export function useFavorites() {
         }
     });
 
-    // sync state with localStorage on change
+    // sync favorites with localStorage on change
     useEffect(() => {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
     }, [favorites]);
