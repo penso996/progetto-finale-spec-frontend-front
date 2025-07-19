@@ -5,10 +5,10 @@ import { NavLink } from "react-router-dom";
 // Import GlobalContext from context
 import GlobalContext from "../context/GlobalContext";
 
-// categories options for dropdown menù
+// categoriesOptions for dropdown menù
 const categoriesOptions = ["Over-Ear", "On-Ear", "In-Ear"];
 
-// sort options for dropdown menù
+// sortOptions for dropdown menù
 const sortOptions = [
     { value: "name-asc", label: "Sort by Name: A-Z" },
     { value: "name-desc", label: "Sort by Name: Z-A" },
@@ -29,24 +29,24 @@ export default function HomePage() {
         searchCategory, setSearchCategory
     } = useContext(GlobalContext);
 
-    // useState to manage headphonesData locally
+    // useState to manage sortOrder locally
     const [sortOrder, setSortOrder] = useState("");
 
-    // memoized sorted data based on chosen sortOrder
-    let orderedHeadphonesData = useMemo(() => {
-        const sorted = [...headphonesData];
+    // memoized and sorted headphonesData based on sortOrder
+    const sortedHeadphonesData = useMemo(() => {
+        const sortedData = [...headphonesData];
 
         if (sortOrder === "name-asc") {
-            sorted.sort((a, b) => a.title.localeCompare(b.title));
+            sortedData.sort((a, b) => a.title.localeCompare(b.title));
         } else if (sortOrder === "name-desc") {
-            sorted.sort((a, b) => b.title.localeCompare(a.title));
+            sortedData.sort((a, b) => b.title.localeCompare(a.title));
         } else if (sortOrder === "category-asc") {
-            sorted.sort((a, b) => a.category.localeCompare(b.category));
+            sortedData.sort((a, b) => a.category.localeCompare(b.category));
         } else if (sortOrder === "category-desc") {
-            sorted.sort((a, b) => b.category.localeCompare(a.category));
+            sortedData.sort((a, b) => b.category.localeCompare(a.category));
         }
 
-        return sorted;
+        return sortedData;
     }, [headphonesData, sortOrder]);
 
     // function to resetFilter locally
@@ -56,8 +56,8 @@ export default function HomePage() {
         setSortOrder("");
     };
 
-    // comparable headphonesData
-    const selectedHeadphones = headphonesData.filter(h => compare.includes(h.id));
+    // comparableHeadphonesData
+    const comparableHeadphonesData = headphonesData.filter(h => compare.includes(h.id));
 
     // RENDER
     return (
@@ -108,15 +108,15 @@ export default function HomePage() {
 
                 <p className="search-title">Select two headpone to compare:</p>
                 <p>
-                    {selectedHeadphones[0] ? (
-                        <strong>{selectedHeadphones[0].title}</strong>
+                    {comparableHeadphonesData[0] ? (
+                        <strong>{comparableHeadphonesData[0].title}</strong>
                     ) : (
                         <i><small>Add first headphone</small></i>
                     )}
                 </p>
                 <p>
-                    {selectedHeadphones[1] ? (
-                        <strong>{selectedHeadphones[1].title}</strong>
+                    {comparableHeadphonesData[1] ? (
+                        <strong>{comparableHeadphonesData[1].title}</strong>
                     ) : (
                         <i><small>Add second headphone</small></i>
                     )}
@@ -135,10 +135,10 @@ export default function HomePage() {
             {/* headphones cards */}
             <section className="headphones-section">
 
-                {orderedHeadphonesData.length === 0 ? (
+                {sortedHeadphonesData.length === 0 ? (
                     <p className="not-found"><strong>No matching headphones...</strong></p>
                 ) : (
-                    orderedHeadphonesData.map(headphone => (
+                    sortedHeadphonesData.map(headphone => (
                         <div className="headphones-card" key={headphone.id}>
                             <p><strong>{headphone.title.toUpperCase()}</strong></p>
                             <p>{headphone.category.toUpperCase()}</p>
