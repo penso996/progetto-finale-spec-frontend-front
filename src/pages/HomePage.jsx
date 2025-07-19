@@ -1,5 +1,5 @@
 // Import hooks from React
-import { useContext, useMemo, useState } from "react";
+import { useContext, useMemo, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 // Import GlobalContext from context
@@ -23,7 +23,7 @@ export default function HomePage() {
     const {
         toast, showToast,
         toggleFavorite, isFavorite,
-        compare, toggleCompare, isSelect,
+        compare, toggleCompare, isSelect, resetCompare,
         headphonesData,
         searchTitle, setSearchTitle,
         searchCategory, setSearchCategory
@@ -58,6 +58,11 @@ export default function HomePage() {
 
     // comparableHeadphonesData
     const comparableHeadphonesData = headphonesData.filter(h => compare.includes(h.id));
+
+    // useEffect to resetCompare
+    useEffect(() => {
+        resetCompare();
+    }, []);
 
     // RENDER
     return (

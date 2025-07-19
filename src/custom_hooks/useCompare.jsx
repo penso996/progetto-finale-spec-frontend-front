@@ -13,8 +13,8 @@ export function useCompare() {
                 prev.includes(id)
                     ? prev.filter(i => i !== id)
                     : [...prev, id]
-            )
-        };
+            );
+        }
     };
 
     // check if ID is in compare

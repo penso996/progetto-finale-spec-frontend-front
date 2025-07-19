@@ -1,5 +1,5 @@
 // Import hooks from React
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 // Import GlobalContext from context
@@ -12,12 +12,17 @@ export default function Favorites() {
     const {
         toast, showToast,
         favorites, toggleFavorite, isFavorite,
-        compare, toggleCompare, isSelect,
+        compare, toggleCompare, isSelect, resetCompare,
         headphonesData
     } = useContext(GlobalContext);
 
     // favoritesHeadphonesData
     const favoritesHeadphonesData = headphonesData.filter(h => favorites.includes(h.id));
+
+    // useEffect to resetCompare
+    useEffect(() => {
+        resetCompare();
+    }, []);
 
     // RENDER
     return (

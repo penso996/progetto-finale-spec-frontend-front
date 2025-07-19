@@ -20,7 +20,7 @@ export default function GlobalContextProvider({ children }) {
     const { favorites, toggleFavorite, isFavorite } = useFavorites();
 
     // custom hook to manage compare
-    const { compare, toggleCompare, isSelect } = useCompare();
+    const { compare, toggleCompare, isSelect, resetCompare } = useCompare();
 
     // useState to manage headphonesData
     const [headphonesData, setHeadphonesData] = useState([]);
@@ -54,7 +54,7 @@ export default function GlobalContextProvider({ children }) {
     return (
         <GlobalContext.Provider value={{
             toast, showToast,
-            favorites, toggleFavorite, isFavorite,
+            favorites, toggleFavorite, isFavorite, resetCompare,
             compare, toggleCompare, isSelect,
             headphonesData,
             searchTitle, setSearchTitle,
