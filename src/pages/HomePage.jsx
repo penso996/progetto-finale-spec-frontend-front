@@ -5,8 +5,16 @@ import { NavLink } from "react-router-dom";
 // Import GlobalContext from context
 import GlobalContext from "../context/GlobalContext";
 
-// categories for dropdown menù
-const categories = ["Over-Ear", "On-Ear", "In-Ear"];
+// categories options for dropdown menù
+const categoriesOptions = ["Over-Ear", "On-Ear", "In-Ear"];
+
+// sort options for dropdown menù
+const sortOptions = [
+    { value: "name-asc", label: "Sort by Name: A-Z" },
+    { value: "name-desc", label: "Sort by Name: Z-A" },
+    { value: "category-asc", label: "Sort by Category: A-Z" },
+    { value: "category-desc", label: "Sort by Category: Z-A" },
+];
 
 
 export default function HomePage() {
@@ -22,33 +30,30 @@ export default function HomePage() {
     } = useContext(GlobalContext);
 
     // useState to manage headphonesData locally
-    const [sortOrder, setSortOrder] = useState("no");
+    const [sortOrder, setSortOrder] = useState("");
 
-    // function to toggleSortOrder
-    function toggleSortOrder() {
-        setSortOrder(prev =>
-            prev === "no" ? "asc" :
-                prev === "asc" ? "desc" :
-                    "no"
-        );
-    };
-
-    // apply optimized sorting
+    // memoized sorted data based on chosen sortOrder
     let orderedHeadphonesData = useMemo(() => {
-        let sorted = [...headphonesData];
-        if (sortOrder === "asc") {
+        const sorted = [...headphonesData];
+
+        if (sortOrder === "name-asc") {
             sorted.sort((a, b) => a.title.localeCompare(b.title));
-        } else if (sortOrder === "desc") {
+        } else if (sortOrder === "name-desc") {
             sorted.sort((a, b) => b.title.localeCompare(a.title));
+        } else if (sortOrder === "category-asc") {
+            sorted.sort((a, b) => a.category.localeCompare(b.category));
+        } else if (sortOrder === "category-desc") {
+            sorted.sort((a, b) => b.category.localeCompare(a.category));
         }
+
         return sorted;
     }, [headphonesData, sortOrder]);
 
-    // function to resetFilter
+    // function to resetFilter locally
     function resetFilters() {
         setSearchTitle("");
         setSearchCategory("");
-        setSortOrder("no");
+        setSortOrder("");
     };
 
     // comparable headphonesData
@@ -60,7 +65,9 @@ export default function HomePage() {
 
             {/* input, category and sort */}
             <section className="search">
+
                 <p className="search-title">Filters</p>
+
                 {/* input */}
                 <input type="text"
                     placeholder="Search by Model Name"
@@ -71,38 +78,34 @@ export default function HomePage() {
                 {/* category */}
                 <select
                     value={searchCategory}
-                    onChange={e => setSearchCategory(e.target.value)}>
-
+                    onChange={e => setSearchCategory(e.target.value)}
+                >
                     <option value="">Headphone Type</option>
-                    {categories.map((cat, ind) => (
-                        <option key={ind} value={cat}>
-                            {cat}
+                    {categoriesOptions.map((opt, ind) => (
+                        <option key={ind} value={opt}>
+                            {opt}
                         </option>
                     ))}
                 </select>
 
                 {/* sort */}
-                <div className="sort" onClick={toggleSortOrder}>
-                    <p>
-                        {sortOrder === "no"
-                            ? "Sort by Model Name"
-                            : sortOrder === "asc"
-                                ? "Sort by Model Name: A-Z"
-                                : "Sort by Model Name: Z-A"}
-                    </p>
-                    {sortOrder === "no" ? (
-                        <i className="fa-solid fa-sort"></i>
-                    ) : sortOrder === "asc" ? (
-                        <i className="fa-solid fa-sort-down"></i>
-                    ) : (
-                        <i className="fa-solid fa-sort-up"></i>
-                    )}
-                </div>
+                <select
+                    value={sortOrder}
+                    onChange={e => setSortOrder(e.target.value)}
+                >
+                    <option value="">Sort</option>
+                    {sortOptions.map((opt, ind) => (
+                        <option key={ind} value={opt.value}>
+                            {opt.label}
+                        </option>
+                    ))}
+                </select>
 
                 {/* reset */}
                 <button onClick={resetFilters}>Reset Filters</button>
 
                 <hr />
+
                 <p className="search-title">Select two headpone to compare:</p>
                 <p>
                     {selectedHeadphones[0] ? (
@@ -118,16 +121,20 @@ export default function HomePage() {
                         <i><small>Add second headphone</small></i>
                     )}
                 </p>
+
+                {/* compare */}
                 <button
                     onClick={resetFilters}
                     disabled={compare.length !== 2}
                 >
                     Compare Now
                 </button>
+
             </section>
 
             {/* headphones cards */}
             <section className="headphones-section">
+
                 {orderedHeadphonesData.length === 0 ? (
                     <p className="not-found"><strong>No matching headphones...</strong></p>
                 ) : (
@@ -154,16 +161,15 @@ export default function HomePage() {
                                         <i className="fa-regular fa-square-check"></i>
                                     </p>
                                 )}
-
                             </div>
                         </div>
                     ))
                 )}
 
-                {/* toast */}
-                {toast && <div className="toast">{toast}</div>}
             </section>
 
+            {/* toast */}
+            {toast && <div className="toast">{toast}</div>}
         </main>
     );
 }
