@@ -1,10 +1,12 @@
 // Import hooks from React
 import { useState } from "react";
 
+
 export function useToast(defaultMessage = "You can only compare two headphones at a time") {
 
     const [toast, setToast] = useState("");
 
+    // show custom message or defaultMessage
     const showToast = (msg = defaultMessage) => {
         setToast(msg);
         // hide toast after 3s
