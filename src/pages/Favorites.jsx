@@ -16,18 +16,20 @@ export default function Favorites() {
         headphonesData
     } = useContext(GlobalContext);
 
-    // filter headphonesData with favorites
-    const favoritesHeadphones = headphonesData.filter(h => favorites.includes(h.id));
+    // favoritesHeadphonesData
+    const favoritesHeadphonesData = headphonesData.filter(h => favorites.includes(h.id));
 
     // RENDER
     return (
         <main>
+
             {/* headphones cards */}
             <section className="headphones-section">
-                {favoritesHeadphones.length === 0 ? (
+
+                {favoritesHeadphonesData.length === 0 ? (
                     <p className="not-found"><strong>No matching headphones...</strong></p>
                 ) : (
-                    favoritesHeadphones.map(headphone => (
+                    favoritesHeadphonesData.map(headphone => (
                         <div className="headphones-card" key={headphone.id}>
                             <p><strong>{headphone.title.toUpperCase()}</strong></p>
                             <p>{headphone.category.toUpperCase()}</p>
@@ -50,20 +52,20 @@ export default function Favorites() {
                                         <i className="fa-regular fa-square-check"></i>
                                     </p>
                                 )}
-
                             </div>
                         </div>
                     ))
                 )}
 
-                {/* comparison-arrow */}
-                <div className="comparison-arrow">
-                    <i className="fa-solid fa-arrow-right"></i>
-                </div>
-
-                {/* toast */}
-                {toast && <div className="toast">{toast}</div>}
             </section>
+
+            {/* comparison arrow */}
+            <div className="comparison-arrow">
+                <i className="fa-solid fa-arrow-right"></i>
+            </div>
+
+            {/* toast */}
+            {toast && <div className="toast">{toast}</div>}
         </main>
     );
 }
