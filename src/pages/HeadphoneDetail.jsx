@@ -1,12 +1,20 @@
 // Import hooks from React
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 // Import assets
 import { graph } from "../assets/graph";
 
+// Import GlobalContext from context
+import GlobalContext from "../context/GlobalContext";
+
 
 export default function HeadphoneDetail() {
+
+    // useContext
+    const {
+        toggleFavorite, isFavorite
+    } = useContext(GlobalContext);
 
     // read ID from URL
     const { id } = useParams();
@@ -46,7 +54,11 @@ export default function HeadphoneDetail() {
                             <h3>{headphoneData.brand.toUpperCase()}</h3>
                             <h2 className="title">
                                 {headphoneData.title.toUpperCase()}
-                                <i className="fa-solid fa-heart-circle-minus" style={{ color: "var(--color-red)" }}></i>
+                                <p onClick={() => toggleFavorite(headphoneData.id)}>
+                                    {isFavorite(headphoneData.id) ?
+                                        <i className="fa-solid fa-heart-circle-minus" style={{ color: "var(--color-red)" }}></i> :
+                                        <i className="fa-solid fa-heart-circle-plus" style={{ color: "var(--color-red)" }}></i>}
+                                </p>
                             </h2>
                             <hr />
                             <p><strong>Category:</strong><br />{headphoneData.category.toUpperCase()}</p>
