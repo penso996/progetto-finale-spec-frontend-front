@@ -119,7 +119,10 @@ export default function HomePage() {
                 </select>
 
                 {/* reset button */}
-                <button onClick={resetFilters}
+                <button onClick={() => {
+                    resetFilters();
+                    showToast("Filters have been reset")
+                }}
                 >Reset Filters
                 </button>
 
