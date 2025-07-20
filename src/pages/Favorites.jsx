@@ -65,13 +65,17 @@ export default function Favorites() {
             </section>
 
             {/* comparison arrow */}
-            <div className="comparison-arrow">
-                {compare.length < 2 ? (
-                    `${compare.length}/2`
-                ) : (
-                    <i className="fa-solid fa-arrow-right"></i>
-                )}
-            </div>
+            {compare.length < 2 ? (
+                <div onClick={() => showToast(() => ("You must choose two headphone to compare"))} className="comparison-arrow">
+                    {compare.length}/2
+                </div>
+            ) : (
+                <NavLink to={"/compare"}>
+                    <div className="comparison-arrow">
+                        <i className="fa-solid fa-arrow-right"></i>
+                    </div>
+                </NavLink>
+            )}
 
         </main>
     );
