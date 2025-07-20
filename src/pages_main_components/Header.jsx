@@ -24,6 +24,7 @@ export default function Header() {
     // RENDER
     return (
         <header>
+
             <NavLink to="/" onClick={handleRefresh}>
                 <h1>Headphones Comparator</h1>
             </NavLink>
@@ -34,6 +35,7 @@ export default function Header() {
                     {favorites.length > 0 && <span className="badge">{favorites.length}</span>}
                 </div>
             </NavLink>
+
         </header>
     );
 }

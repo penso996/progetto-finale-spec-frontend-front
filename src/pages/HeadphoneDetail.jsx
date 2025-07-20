@@ -18,6 +18,7 @@ export default function HeadphoneDetail() {
 
     // read ID from URL
     const { id } = useParams();
+
     // useState to manage headphoneData
     const [headphoneData, setHeadphoneData] = useState("");
 

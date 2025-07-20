@@ -19,9 +19,6 @@ const sortOptions = [
 
 export default function HomePage() {
 
-    // useNavigate to handleRedirect
-    const navigate = useNavigate();
-
     // useContext
     const {
         showToast,
@@ -31,6 +28,9 @@ export default function HomePage() {
         searchTitle, setSearchTitle,
         searchCategory, setSearchCategory
     } = useContext(GlobalContext);
+
+    // useNavigate to handleRedirect
+    const navigate = useNavigate();
 
     // useState to manage sortOrder locally
     const [sortOrder, setSortOrder] = useState("");
@@ -55,7 +55,7 @@ export default function HomePage() {
     // comparableHeadphonesData
     const comparableHeadphonesData = headphonesData.filter(h => compare.includes(h.id));
 
-    // function to resetFilter locally
+    // function to resetFilter
     function resetFilters() {
         setSearchTitle("");
         setSearchCategory("");
@@ -70,7 +70,6 @@ export default function HomePage() {
             showToast("You must select two headphones to compare");
         }
     };
-
 
     // useEffect to resetCompare
     useEffect(() => {
