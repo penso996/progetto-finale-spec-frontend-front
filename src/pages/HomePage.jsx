@@ -1,6 +1,6 @@
 // Import hooks from React
 import { useContext, useMemo, useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 // Import GlobalContext from context
 import GlobalContext from "../context/GlobalContext";
@@ -18,6 +18,17 @@ const sortOptions = [
 
 
 export default function HomePage() {
+
+    // useNavigate to handleRedirect
+    const navigate = useNavigate();
+
+    const handleRedirect = () => {
+        if (compare.length === 2) {
+            navigate("/compare");
+        } else {
+            showToast("You must select two headphones to compare");
+        }
+    };
 
     // useContext
     const {
@@ -131,9 +142,7 @@ export default function HomePage() {
                 </p>
 
                 {/* compare button */}
-                <button
-                    onClick={resetFilters}
-                    disabled={compare.length !== 2}
+                <button onClick={handleRedirect}
                 >Compare Now
                 </button>
 
