@@ -34,6 +34,7 @@ export default function HeadphoneDetail() {
     // RENDER
     return (
         <main>
+
             {!headphoneData ? (
                 <p><strong>Loading data...</strong></p>
             ) : (
@@ -41,7 +42,10 @@ export default function HeadphoneDetail() {
                     <div className="headphone-card-data">
                         <div>
                             <h3>{headphoneData.brand.toUpperCase()}</h3>
-                            <h2>{headphoneData.title.toUpperCase()}</h2>
+                            <h2 className="title">
+                                {headphoneData.title.toUpperCase()}
+                                <i className="fa-solid fa-heart-circle-minus" style={{ color: "var(--color-red)" }}></i>
+                            </h2>
                             <hr />
                             <p><strong>Category:</strong><br />{headphoneData.category.toUpperCase()}</p>
                             <p><strong>Type:</strong><br />{headphoneData.type.toUpperCase()}</p>
@@ -63,6 +67,7 @@ export default function HeadphoneDetail() {
                     </div>
                 </div>
             )}
+
         </main>
     );
 }

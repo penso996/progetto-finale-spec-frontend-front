@@ -147,6 +147,12 @@ header {
   gap: 20px;
 }
 
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .headphone-card-image {
   width: 300px;
   height: 400px;
