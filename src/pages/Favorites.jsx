@@ -10,7 +10,7 @@ export default function Favorites() {
 
     // useContext
     const {
-        toast, showToast,
+        showToast,
         favorites, toggleFavorite, isFavorite,
         compare, toggleCompare, isSelect, resetCompare,
         headphonesData
@@ -69,8 +69,6 @@ export default function Favorites() {
                 <i className="fa-solid fa-arrow-right"></i>
             </div>
 
-            {/* toast */}
-            {toast && <div className="toast">{toast}</div>}
         </main>
     );
 }

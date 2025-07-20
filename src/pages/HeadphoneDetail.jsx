@@ -5,17 +5,19 @@ import { useEffect, useState } from "react";
 // Import assets
 import { graph } from "../assets/graph";
 
+
 export default function HeadphoneDetail() {
 
-    // useState to manage headphoneData
+    // read ID from URL
     const { id } = useParams();
-    const [headphoneData, setHeadphoneData] = useState(null);
+    // useState to manage headphoneData
+    const [headphoneData, setHeadphoneData] = useState("");
 
     // useEffect and function to fetchHeadphoneData
     useEffect(() => {
         async function fetchHeadphoneData() {
             try {
-                const response = await fetch(`http://localhost:3001/headphones/${id}`);
+                const response = await fetch(`http://localhost:3001/headphones/${id}`); // fetch by ID
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }

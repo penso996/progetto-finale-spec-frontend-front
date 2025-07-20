@@ -21,7 +21,7 @@ export default function HomePage() {
 
     // useContext
     const {
-        toast, showToast,
+        showToast,
         toggleFavorite, isFavorite,
         compare, toggleCompare, isSelect, resetCompare,
         headphonesData,
@@ -175,8 +175,6 @@ export default function HomePage() {
 
             </section>
 
-            {/* toast */}
-            {toast && <div className="toast">{toast}</div>}
         </main>
     );
 }
