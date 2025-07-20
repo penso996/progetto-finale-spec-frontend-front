@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalContextProvider from "./context/GlobalContextProvider";
 
 // Import pages
+import Compare from "./pages/Compare";
 import HomePage from "./pages/HomePage";
 import HeadphoneDetail from "./pages/HeadphoneDetail";
 import Favorites from "./pages/Favorites";
@@ -24,6 +25,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/headphones/:id" element={<HeadphoneDetail />} />
             <Route path="/favorites-headphones" element={<Favorites />} />
+            <Route path="/compare" element={<Compare />} />
           </Route>
         </Routes>
       </BrowserRouter>
