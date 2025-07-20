@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 import GlobalContext from "./GlobalContext.jsx";
 
 // Import hooks from custom_hooks
-import { useFavorites } from "../custom_hooks/useFavorites";
-import { useDebounce } from "../custom_hooks/useDebounce.jsx";
-import { useCompare } from "../custom_hooks/useCompare.jsx";
 import { useToast } from "../custom_hooks/useToast.jsx";
+import { useFavorites } from "../custom_hooks/useFavorites";
+import { useCompare } from "../custom_hooks/useCompare.jsx";
+import { useDebounce } from "../custom_hooks/useDebounce.jsx";
 
 
 export default function GlobalContextProvider({ children }) {
@@ -23,12 +23,13 @@ export default function GlobalContextProvider({ children }) {
     const { compare, toggleCompare, isSelect, resetCompare } = useCompare();
 
     // useState to manage headphonesData
+    // data
     const [headphonesData, setHeadphonesData] = useState([]);
-
+    // search
     const [searchTitle, setSearchTitle] = useState("");
     // custom hook to debounce searchTitle
     const debouncedSearchTitle = useDebounce(searchTitle, 500);
-
+    // category
     const [searchCategory, setSearchCategory] = useState("");
 
     // function to fetch headphonesData
@@ -54,8 +55,8 @@ export default function GlobalContextProvider({ children }) {
     return (
         <GlobalContext.Provider value={{
             toast, showToast,
-            favorites, toggleFavorite, isFavorite, resetCompare,
-            compare, toggleCompare, isSelect,
+            favorites, toggleFavorite, isFavorite,
+            compare, toggleCompare, isSelect, resetCompare,
             headphonesData,
             searchTitle, setSearchTitle,
             searchCategory, setSearchCategory
