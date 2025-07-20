@@ -32,7 +32,7 @@ export default function Favorites() {
             <section className="headphones-section">
 
                 {favoritesHeadphonesData.length === 0 ? (
-                    <p className="not-found"><strong>No matching headphones...</strong></p>
+                    <p className="not-found"><strong>No favorites headphones...</strong></p>
                 ) : (
                     favoritesHeadphonesData.map(headphone => (
                         <div className="headphones-card" key={headphone.id}>
