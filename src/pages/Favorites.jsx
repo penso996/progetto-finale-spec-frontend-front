@@ -66,7 +66,7 @@ export default function Favorites() {
 
             {/* comparison arrow */}
             {compare.length < 2 ? (
-                <div onClick={() => showToast(() => ("You must choose two headphone to compare"))} className="comparison-arrow">
+                <div onClick={() => showToast("You must select two headphones to compare")} className="comparison-arrow">
                     {compare.length}/2
                 </div>
             ) : (

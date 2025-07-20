@@ -22,14 +22,6 @@ export default function HomePage() {
     // useNavigate to handleRedirect
     const navigate = useNavigate();
 
-    const handleRedirect = () => {
-        if (compare.length === 2) {
-            navigate("/compare");
-        } else {
-            showToast("You must select two headphones to compare");
-        }
-    };
-
     // useContext
     const {
         showToast,
@@ -60,6 +52,9 @@ export default function HomePage() {
         return sortedData;
     }, [headphonesData, sortOrder]);
 
+    // comparableHeadphonesData
+    const comparableHeadphonesData = headphonesData.filter(h => compare.includes(h.id));
+
     // function to resetFilter locally
     function resetFilters() {
         setSearchTitle("");
@@ -67,8 +62,15 @@ export default function HomePage() {
         setSortOrder("");
     };
 
-    // comparableHeadphonesData
-    const comparableHeadphonesData = headphonesData.filter(h => compare.includes(h.id));
+    // function to handleRedirect
+    const handleRedirect = () => {
+        if (compare.length === 2) {
+            navigate("/compare");
+        } else {
+            showToast("You must select two headphones to compare");
+        }
+    };
+
 
     // useEffect to resetCompare
     useEffect(() => {
