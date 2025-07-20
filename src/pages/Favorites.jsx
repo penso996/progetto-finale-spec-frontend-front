@@ -66,7 +66,11 @@ export default function Favorites() {
 
             {/* comparison arrow */}
             <div className="comparison-arrow">
-                <i className="fa-solid fa-arrow-right"></i>
+                {compare.length < 2 ? (
+                    `${compare.length}/2`
+                ) : (
+                    <i className="fa-solid fa-arrow-right"></i>
+                )}
             </div>
 
         </main>
