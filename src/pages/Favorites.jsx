@@ -65,16 +65,21 @@ export default function Favorites() {
             </section>
 
             {/* comparison arrow */}
-            {compare.length < 2 ? (
-                <div onClick={() => showToast("You must select two headphones to compare")} className="comparison-arrow">
-                    {compare.length}/2
-                </div>
-            ) : (
-                <NavLink to={"/compare"}>
-                    <div className="comparison-arrow">
-                        <i className="fa-solid fa-arrow-right"></i>
+            {favoritesHeadphonesData.length >= 2 && (
+                compare.length < 2 ? (
+                    <div
+                        onClick={() => showToast("You must select two headphones to compare")}
+                        className="comparison-arrow"
+                    >
+                        {compare.length}/2
                     </div>
-                </NavLink>
+                ) : (
+                    <NavLink to={"/compare"}>
+                        <div className="comparison-arrow">
+                            <i className="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </NavLink>
+                )
             )}
 
         </main>
