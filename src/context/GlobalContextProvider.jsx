@@ -35,7 +35,7 @@ export default function GlobalContextProvider({ children }) {
     // function to fetch headphonesData
     async function fetchHeadphonesData() {
         try {
-            const response = await fetch(`http://localhost:3001/headphones/?search=${debouncedSearchTitle}&category=${searchCategory}`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}?search=${debouncedSearchTitle}&category=${searchCategory}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }

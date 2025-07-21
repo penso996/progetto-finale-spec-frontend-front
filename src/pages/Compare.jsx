@@ -24,8 +24,8 @@ export default function Compare() {
     async function fetchHeadphonesByIds(id1, id2) {
         try {
             const [res1, res2] = await Promise.all([
-                fetch(`http://localhost:3001/headphones/${id1}`),
-                fetch(`http://localhost:3001/headphones/${id2}`)
+                fetch(`${import.meta.env.VITE_API_URL}${id1}`), // fetch by first ID
+                fetch(`${import.meta.env.VITE_API_URL}${id2}`) // fetch by second ID
             ]);
 
             if (!res1.ok || !res2.ok) {
@@ -42,7 +42,7 @@ export default function Compare() {
     // useEffect
     useEffect(() => {
         fetchHeadphonesByIds(headphone1Id, headphone2Id);
-    }, [])
+    }, []);
 
     // RENDER
     return (

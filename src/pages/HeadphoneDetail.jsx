@@ -26,7 +26,7 @@ export default function HeadphoneDetail() {
     useEffect(() => {
         async function fetchHeadphoneData() {
             try {
-                const response = await fetch(`http://localhost:3001/headphones/${id}`); // fetch by ID
+                const response = await fetch(`${import.meta.env.VITE_API_URL}${id}`); // fetch by ID
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
