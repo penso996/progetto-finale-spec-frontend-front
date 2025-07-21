@@ -62,11 +62,11 @@ export default function HeadphoneDetail() {
                                 </p>
                             </h2>
                             <hr />
-                            <p><strong>Category:</strong><br />{headphoneData.category.toUpperCase()}</p>
-                            <p><strong>Type:</strong><br />{headphoneData.type.toUpperCase()}</p>
-                            <p><strong>Wireless:</strong><br />{headphoneData.isWireless ? "YES" : "NO"}</p>
-                            <p><strong>Weight:</strong><br />{headphoneData.weight}</p>
-                            <p><strong>Price:</strong><br />${headphoneData.retailPrice}</p>
+                            <p>Category:<br /><strong>{headphoneData.category.toUpperCase()}</strong></p>
+                            <p>Type:<br /><strong>{headphoneData.type.toUpperCase()}</strong></p>
+                            <p>Wireless:<br /><strong>{headphoneData.isWireless ? "YES" : "NO"}</strong></p>
+                            <p>Weight:<br /><strong>{headphoneData.weight}</strong></p>
+                            <p>Price:<br /><strong>${headphoneData.retailPrice}</strong></p>
                         </div>
                         <div>
                             <p><strong>Frequency Profile:</strong></p>
