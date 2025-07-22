@@ -24,8 +24,8 @@ export default function Compare() {
     const [compareById, setCompareById] = useState([]);
 
     // retrieving headphone1Id and headphone2Id data from compare
-    const headphone1Id = 2;
-    const headphone2Id = 6;
+    const headphone1Id = compare[0];
+    const headphone2Id = compare[1];
 
     // function to fetch headphones by two IDs then setCompareById
     async function fetchHeadphonesByIds(id1, id2) {
@@ -96,7 +96,7 @@ export default function Compare() {
                                     <td></td>
                                     <td style={{ color: color1 }}>
                                         <strong><NavLink to={`/headphones/${compareById[0]?.id}`}>{compareById[0]?.title}</NavLink></strong></td>
-                                    <td style={{ color: color1 }}>
+                                    <td style={{ color: color2 }}>
                                         <strong><NavLink to={`/headphones/${compareById[1]?.id}`}>{compareById[1]?.title} </NavLink></strong></td>
                                 </tr>
 
@@ -150,11 +150,6 @@ export default function Compare() {
                                             />
                                         </div>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>image</td>
-                                    <td>image</td>
                                 </tr>
                             </tbody>
 
