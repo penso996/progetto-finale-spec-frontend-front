@@ -176,7 +176,7 @@ header {
 }
 
 .compare-graph-size {
-  width: 100%;
+  width: 90%;
 }
 
 /* HeadphoneDetail.jsx */
@@ -241,10 +241,16 @@ header {
 }
 
 .graph-container {
-  width: 300px;
+  width: 500px;
 }
 
-@media (max-width: 575px) {
+@media (max-width: 1200px) {
+  .graph-container {
+    width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
   .graph-container {
     width: 250px;
   }

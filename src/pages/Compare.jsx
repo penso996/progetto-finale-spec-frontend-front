@@ -45,10 +45,23 @@ export default function Compare() {
         }
     }
 
-    // get headphoneFreqImg1 from graph
+    // get headphoneFreqImg1 and headphoneFreqImg1 from graph
     const headphoneFreqImg1 = graph[compareById[0]?.frequencyProfile];
-    // get headphoneFreqImg2 from graph
     const headphoneFreqImg2 = graph[compareById[1]?.frequencyProfile];
+
+    // getColor from frequencyProfile
+    const getColor = (profile) => {
+        switch (profile) {
+            case "bright": return "#88ece4";
+            case "flat": return "#d80404";
+            case "neutral": return "#f054fc";
+            case "v-shape": return "#088ce4";
+            case "warm": return "#48ac04";
+        }
+    };
+
+    const color1 = getColor(compareById[0]?.frequencyProfile);
+    const color2 = getColor(compareById[1]?.frequencyProfile);
 
     // useEffect
     useEffect(() => {
@@ -80,8 +93,8 @@ export default function Compare() {
                             <tbody>
                                 <tr>
                                     <td></td>
-                                    <td><strong>{compareById[0]?.title}</strong></td>
-                                    <td><strong>{compareById[1]?.title}</strong></td>
+                                    <td style={{ color: color1 }}><strong>{compareById[0]?.title}</strong></td>
+                                    <td style={{ color: color2 }}><strong>{compareById[1]?.title}</strong></td>
                                 </tr>
 
                                 <tr>
