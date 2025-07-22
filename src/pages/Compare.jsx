@@ -61,8 +61,8 @@ export default function Compare() {
         }
     };
 
-    const color1 = getColor(compareById[0]?.frequencyProfile);
-    const color2 = getColor(compareById[1]?.frequencyProfile);
+    const color0 = getColor(compareById[0]?.frequencyProfile);
+    const color1 = getColor(compareById[1]?.frequencyProfile);
 
     // useEffect
     useEffect(() => {
@@ -94,9 +94,9 @@ export default function Compare() {
                             <tbody>
                                 <tr>
                                     <td></td>
-                                    <td style={{ color: color1 }}>
+                                    <td style={{ color: color0 }}>
                                         <strong><NavLink to={`/headphones/${compareById[0]?.id}`}>{compareById[0]?.title}</NavLink></strong></td>
-                                    <td style={{ color: color2 }}>
+                                    <td style={{ color: color1 }}>
                                         <strong><NavLink to={`/headphones/${compareById[1]?.id}`}>{compareById[1]?.title} </NavLink></strong></td>
                                 </tr>
 
