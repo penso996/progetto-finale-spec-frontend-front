@@ -1,0 +1,15 @@
+.graphWrapper {
+    width: 100%;
+    position: relative;
+}
+
+.frequencyGraph {
+    width: 100%;
+}
+
+.frequencyLine {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}

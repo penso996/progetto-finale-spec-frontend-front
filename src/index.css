@@ -236,16 +236,6 @@ header {
   border-radius: 16px
 }
 
-.frequency-profile {
-  width: 300px;
-}
-
-@media (max-width: 575px) {
-  .frequency-profile {
-    width: 200px;
-  }
-}
-
 /* HomePage.jsx */
 /* Favorites.jsx */
 .homepage {

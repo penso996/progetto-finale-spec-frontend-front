@@ -8,6 +8,8 @@ import { graph } from "../assets/graph";
 // Import GlobalContext from context
 import GlobalContext from "../context/GlobalContext";
 
+// Import pages_single_components
+import HeadphoneGraph from "../pages_single_components/HeadphoneGraph";
 
 export default function HeadphoneDetail() {
 
@@ -39,7 +41,7 @@ export default function HeadphoneDetail() {
         fetchHeadphoneData();
     }, [id]);
 
-    // get frequency profile image from graph
+    // get headphoneFreqImg from graph
     const headphoneFreqImg = graph[headphoneData?.frequencyProfile];
 
     // RENDER
@@ -70,11 +72,14 @@ export default function HeadphoneDetail() {
                         </div>
                         <div>
                             <p><strong>Frequency Profile:</strong></p>
-                            <img
-                                className="frequency-profile"
-                                src={headphoneFreqImg}
-                                alt={headphoneData.frequencyProfile}
-                            />
+                            <div className="graph-container">
+
+                                <HeadphoneGraph
+                                    line1={headphoneFreqImg}
+                                    alt1={headphoneData.frequencyProfile}
+                                />
+
+                            </div>
                         </div>
                     </div>
                     <div className="headphone-card-image">

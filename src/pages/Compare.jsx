@@ -4,6 +4,12 @@ import { useContext, useEffect, useState } from "react";
 // Import GlobalContext from context
 import GlobalContext from "../context/GlobalContext";
 
+// Import assets
+import { graph } from "../assets/graph";
+
+// Import pages_single_components
+import HeadphoneGraph from "../pages_single_components/HeadphoneGraph";
+
 
 export default function Compare() {
 
@@ -38,6 +44,11 @@ export default function Compare() {
             console.error('Error fetching headphones by IDs', error);
         }
     }
+
+    // get headphoneFreqImg1 from graph
+    const headphoneFreqImg1 = graph[compareById[0]?.frequencyProfile];
+    // get headphoneFreqImg2 from graph
+    const headphoneFreqImg2 = graph[compareById[1]?.frequencyProfile];
 
     // useEffect
     useEffect(() => {
@@ -113,7 +124,20 @@ export default function Compare() {
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><img src={compareById[0]?.imageUrl} alt={compareById[0]?.title} /></td>
+                                    <td colspan="2">
+
+                                        <HeadphoneGraph
+                                            line1={headphoneFreqImg1}
+                                            alt1={compareById[0]?.frequencyProfile}
+                                            line2={headphoneFreqImg2}
+                                            alt2={compareById[0]?.frequencyProfile}
+                                        />
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>image</td>
                                     <td>image</td>
                                 </tr>
                             </tbody>
@@ -122,8 +146,9 @@ export default function Compare() {
 
                     </section>
                 </>
-            )}
+            )
+            }
 
-        </main>
+        </main >
     )
 }
