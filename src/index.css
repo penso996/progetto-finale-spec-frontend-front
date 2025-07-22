@@ -334,26 +334,6 @@ input:focus {
   font-size: larger;
 }
 
-.headphones-card {
-  margin-bottom: 10px;
-  width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 16px;
-  padding: 10px 20px;
-  background-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.headphones-card p {
-  font-size: larger;
-}
-
-.fav-comp {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
 .comparison-arrow {
   position: fixed;
   top: 50%;

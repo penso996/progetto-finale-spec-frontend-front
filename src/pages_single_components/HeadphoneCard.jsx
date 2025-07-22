@@ -1,6 +1,9 @@
 // Import hooks from React
 import { NavLink } from "react-router-dom";
 
+// Import CSS
+import style from "./HeadphoneCard.module.css";
+
 
 export default function HeadphoneCard({
     headphone,
@@ -12,7 +15,7 @@ export default function HeadphoneCard({
     showToast
 }) {
     return (
-        <div className="headphones-card" key={headphone.id}>
+        <div className={style.headphonesCard} key={headphone.id}>
 
             {/* title */}
             <p><strong>{headphone.title.toUpperCase()}</strong></p>
@@ -26,7 +29,7 @@ export default function HeadphoneCard({
             </NavLink>
 
             {/* favorite, compare */}
-            <div className="fav-comp">
+            <div className={style.favComp}>
 
                 {/* favorite */}
                 <p onClick={() => toggleFavorite(headphone.id)}>

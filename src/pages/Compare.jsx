@@ -137,7 +137,7 @@ export default function Compare() {
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td colspan="2">
+                                    <td colSpan="2">
                                         <div className="compare-graph-size">
                                             <HeadphoneGraph
                                                 line1={headphoneFreqImg1}
