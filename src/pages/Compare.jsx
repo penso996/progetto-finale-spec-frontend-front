@@ -1,5 +1,6 @@
 // Import hooks from React
 import { useContext, useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 // Import GlobalContext from context
 import GlobalContext from "../context/GlobalContext";
@@ -23,8 +24,8 @@ export default function Compare() {
     const [compareById, setCompareById] = useState([]);
 
     // retrieving headphone1Id and headphone2Id data from compare
-    const headphone1Id = compare[0];
-    const headphone2Id = compare[1];
+    const headphone1Id = 2;
+    const headphone2Id = 6;
 
     // function to fetch headphones by two IDs then setCompareById
     async function fetchHeadphonesByIds(id1, id2) {
@@ -93,8 +94,10 @@ export default function Compare() {
                             <tbody>
                                 <tr>
                                     <td></td>
-                                    <td style={{ color: color1 }}><strong>{compareById[0]?.title}</strong></td>
-                                    <td style={{ color: color2 }}><strong>{compareById[1]?.title}</strong></td>
+                                    <td style={{ color: color1 }}>
+                                        <strong><NavLink to={`/headphones/${compareById[0]?.id}`}>{compareById[0]?.title}</NavLink></strong></td>
+                                    <td style={{ color: color1 }}>
+                                        <strong><NavLink to={`/headphones/${compareById[1]?.id}`}>{compareById[1]?.title} </NavLink></strong></td>
                                 </tr>
 
                                 <tr>
