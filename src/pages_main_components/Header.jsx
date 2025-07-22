@@ -2,6 +2,9 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useContext } from "react";
 
+// Import CSS
+import style from "./Header.module.css";
+
 // Import GlobalContext from context
 import GlobalContext from "../context/GlobalContext";
 
@@ -30,9 +33,9 @@ export default function Header() {
             </NavLink>
 
             <NavLink to="/favorites-headphones">
-                <div className="favorite-icon">
+                <div className={style.favoriteIcon}>
                     <i className="fa-solid fa-heart fa-2x"></i>
-                    {favorites.length > 0 && <span className="badge">{favorites.length}</span>}
+                    {favorites.length > 0 && <span className={style.badge}>{favorites.length}</span>}
                 </div>
             </NavLink>
 

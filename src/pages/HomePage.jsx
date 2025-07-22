@@ -1,9 +1,12 @@
 // Import hooks from React
 import { useContext, useMemo, useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // Import GlobalContext from context
 import GlobalContext from "../context/GlobalContext";
+
+// Import pages_single_components
+import HeadphoneCard from "../pages_single_components/HeadphoneCard";
 
 // categoriesOptions for dropdown menù
 const categoriesOptions = ["Over-Ear", "On-Ear", "In-Ear"];
@@ -154,38 +157,22 @@ export default function HomePage() {
 
             {/* headphones cards */}
             <section className="headphones-section">
-
                 {sortedHeadphonesData.length === 0 ? (
                     <p className="not-found"><strong>No matching headphones...</strong></p>
                 ) : (
                     sortedHeadphonesData.map(headphone => (
-                        <div className="headphones-card" key={headphone.id}>
-                            <p><strong>{headphone.title.toUpperCase()}</strong></p>
-                            <p>{headphone.category.toUpperCase()}</p>
-                            <NavLink to={`/headphones/${headphone.id}`}>
-                                <u>See complete spec sheets</u>
-                            </NavLink>
-                            <div className="fav-comp">
-                                <p onClick={() => toggleFavorite(headphone.id)}>
-                                    {isFavorite(headphone.id) ?
-                                        <i className="fa-solid fa-heart-circle-minus" style={{ color: "var(--color-red)" }}></i> :
-                                        <i className="fa-solid fa-heart-circle-plus" style={{ color: "var(--color-red)" }}></i>}
-                                </p>
-                                {(compare.length < 2 || compare.includes(headphone.id)) ? (
-                                    <p onClick={() => toggleCompare(headphone.id)}>
-                                        {isSelect(headphone.id) ?
-                                            <i className="fa-solid fa-square-check"></i> :
-                                            <i className="fa-regular fa-square-check"></i>}
-                                    </p>) : (
-                                    <p onClick={() => showToast()}>
-                                        <i className="fa-regular fa-square-check"></i>
-                                    </p>
-                                )}
-                            </div>
-                        </div>
+                        <HeadphoneCard
+                            key={headphone.id}
+                            headphone={headphone}
+                            toggleFavorite={toggleFavorite}
+                            isFavorite={isFavorite}
+                            toggleCompare={toggleCompare}
+                            isSelect={isSelect}
+                            compare={compare}
+                            showToast={showToast}
+                        />
                     ))
                 )}
-
             </section>
 
         </main>

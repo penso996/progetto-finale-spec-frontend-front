@@ -73,48 +73,6 @@ main {
   }
 }
 
-/* pages_main_components */
-/* Header.jsx */
-header {
-  height: 60px;
-  padding: 0 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: solid 1px black;
-  background-color: var(--color-primary-dark);
-  color: white;
-}
-
-@media (max-width: 992px) {
-  header {
-    padding: 0 20px;
-  }
-
-  header h1 {
-    font-size: 20px;
-  }
-}
-
-.favorite-icon {
-  position: relative;
-}
-
-.favorite-icon i {
-  color: var(--color-red);
-}
-
-.favorite-icon .badge {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  color: white;
-  border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
 /* pages */
 /* Compare.jsx */
 .headphones-compare {
