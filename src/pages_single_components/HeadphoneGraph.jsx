@@ -4,6 +4,7 @@ import { graph } from "../assets/graph";
 // Import CSS
 import style from "./HeadphoneGraph.module.css";
 
+
 export default function HeadphoneGraph({
     line1,
     alt1,
