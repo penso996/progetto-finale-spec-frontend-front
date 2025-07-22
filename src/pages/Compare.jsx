@@ -111,6 +111,11 @@ export default function Compare() {
                                             <i className="fa-solid fa-heart-circle-plus" style={{ color: "var(--color-red)" }}></i>}
                                     </p></td>
                                 </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><img src={compareById[0]?.imageUrl} alt={compareById[0]?.title} /></td>
+                                    <td>image</td>
+                                </tr>
                             </tbody>
 
                         </table>
