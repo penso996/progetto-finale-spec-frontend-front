@@ -56,7 +56,7 @@ export default function Compare() {
             case "bright": return "#88ece4";
             case "flat": return "#d80404";
             case "neutral": return "#f054fc";
-            case "v-shape": return "#088ce4";
+            case "v-shaped": return "#088ce4";
             case "warm": return "#48ac04";
         }
     };
