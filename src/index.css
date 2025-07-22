@@ -175,6 +175,10 @@ header {
   width: 1%;
 }
 
+.compare-graph-size {
+  width: 100%;
+}
+
 /* HeadphoneDetail.jsx */
 .headphone-card {
   width: 60%;

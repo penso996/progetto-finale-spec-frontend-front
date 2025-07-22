@@ -125,14 +125,14 @@ export default function Compare() {
                                 <tr>
                                     <td></td>
                                     <td colspan="2">
-
-                                        <HeadphoneGraph
-                                            line1={headphoneFreqImg1}
-                                            alt1={compareById[0]?.frequencyProfile}
-                                            line2={headphoneFreqImg2}
-                                            alt2={compareById[0]?.frequencyProfile}
-                                        />
-
+                                        <div className="compare-graph-size">
+                                            <HeadphoneGraph
+                                                line1={headphoneFreqImg1}
+                                                alt1={compareById[0]?.frequencyProfile}
+                                                line2={headphoneFreqImg2}
+                                                alt2={compareById[0]?.frequencyProfile}
+                                            />
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
