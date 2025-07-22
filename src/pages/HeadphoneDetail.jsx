@@ -11,6 +11,7 @@ import GlobalContext from "../context/GlobalContext";
 // Import pages_single_components
 import HeadphoneGraph from "../pages_single_components/HeadphoneGraph";
 
+
 export default function HeadphoneDetail() {
 
     // useContext
@@ -73,12 +74,10 @@ export default function HeadphoneDetail() {
                         <div>
                             <p><strong>Frequency Profile:</strong></p>
                             <div className="graph-container">
-
                                 <HeadphoneGraph
                                     line1={headphoneFreqImg}
                                     alt1={headphoneData.frequencyProfile}
                                 />
-
                             </div>
                         </div>
                     </div>

@@ -236,6 +236,16 @@ header {
   border-radius: 16px
 }
 
+.graph-container {
+  width: 300px;
+}
+
+@media (max-width: 575px) {
+  .graph-container {
+    width: 250px;
+  }
+}
+
 /* HomePage.jsx */
 /* Favorites.jsx */
 .homepage {
