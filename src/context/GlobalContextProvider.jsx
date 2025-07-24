@@ -8,8 +8,6 @@ import GlobalContext from "./GlobalContext.jsx";
 import { useToast } from "../custom_hooks/useToast.jsx";
 import { useFavorites } from "../custom_hooks/useFavorites";
 import { useCompare } from "../custom_hooks/useCompare.jsx";
-import { useDebounce } from "../custom_hooks/useDebounce.jsx";
-
 
 export default function GlobalContextProvider({ children }) {
 
@@ -27,8 +25,15 @@ export default function GlobalContextProvider({ children }) {
     const [headphonesData, setHeadphonesData] = useState([]);
     // search
     const [searchTitle, setSearchTitle] = useState("");
-    // custom hook to debounce searchTitle
-    const debouncedSearchTitle = useDebounce(searchTitle, 500);
+    // debouncedSearchTitle via manual debounce
+    const [debouncedSearchTitle, setDebouncedSearchTitle] = useState("");
+    // debounce logic
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebouncedSearchTitle(searchTitle);
+        }, 500);
+        return () => clearTimeout(timer);
+    }, [searchTitle]);
     // category
     const [searchCategory, setSearchCategory] = useState("");
 
