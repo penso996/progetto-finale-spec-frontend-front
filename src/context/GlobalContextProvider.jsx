@@ -25,7 +25,7 @@ export default function GlobalContextProvider({ children }) {
     const [headphonesData, setHeadphonesData] = useState([]);
     // search
     const [searchTitle, setSearchTitle] = useState("");
-    // debouncedSearchTitle via manual debounce
+    // debounced search
     const [debouncedSearchTitle, setDebouncedSearchTitle] = useState("");
     // debounce logic
     useEffect(() => {
