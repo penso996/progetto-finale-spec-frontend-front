@@ -37,6 +37,11 @@ main {
   }
 }
 
+/* <i> */
+i {
+  cursor: pointer;
+}
+
 /* toast */
 .toast {
   font-size: smaller;
